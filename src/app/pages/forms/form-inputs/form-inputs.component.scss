@@ -7,6 +7,22 @@ nb-card-body {
   }
 }
 
+.two-column-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.nb-input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.nb-input-label {
+  width: 100%;
+  margin-top: 50px;
+}
+
 .full-name-inputs,
 .validation-checkboxes {
   display: flex;
@@ -23,4 +39,10 @@ nb-card-body {
 
 .demo-items {
   flex: 1 0 33%;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
