@@ -42,7 +42,7 @@ export class FormInputsComponent {
 
   constructor(private formBuilder: FormBuilder, private service:ActividadesService){
     service.getComunas().subscribe((data: any) => {
-      console.log(data['comuna']['rows'])
+      // console.log(data['comuna']['rows'])
       this.comunas = data['comuna']['rows']
     })
 
