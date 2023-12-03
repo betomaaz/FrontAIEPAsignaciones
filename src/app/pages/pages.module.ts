@@ -7,7 +7,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
-import { LoginNewComponent } from './login-new/login-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,8 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [
-    PagesComponent,
-    LoginNewComponent,
+    PagesComponent
   ],
 })
 export class PagesModule {
