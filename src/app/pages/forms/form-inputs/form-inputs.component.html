@@ -1,4 +1,5 @@
-<!-- <div class="row">
+<!-- 
+<div class="row">
   <div class="col-lg-6">
     <nb-card>
       <nb-card-header>Default Inputs</nb-card-header>
@@ -95,6 +96,7 @@
       <nb-card-header class="text-center">
         <H6>Registrar actividad</H6>
       </nb-card-header>
+
       <nb-card-body>
         <form [formGroup]="formActividad">
           <div class="row">
@@ -106,11 +108,16 @@
                 placeholder="Nombre actividad"
                 formControlName="ACT_NOMBRE">
 
-              <input type="text" nbInput fullWidth 
+              <!-- 
+                <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
                 placeholder="Seleccionar proyecto" 
-                formControlName="ACT_PRO_ID">
+                formControlName="ACT_PRO_ID"> -->
+
+              <nb-select formControlName="ACT_PRO_ID" class="nb-input" placeholder="Seleccionar proyecto" fullWidth>
+                <nb-option *ngFor="let item of proyectos" [value]="item.PRO_ID">{{item.PRO_NOMBRE}}</nb-option>
+              </nb-select>
 
 
               <nb-select formControlName="ACT_COM_ID" class="nb-input" placeholder="Seleccionar Comuna" fullWidth>
@@ -129,11 +136,13 @@
                 placeholder="Fecha de agenda" 
                 formControlName="AGE_FECHA">
 
-              <input type="text" nbInput fullWidth 
+              <!-- <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
                 placeholder="Seleccionar horas disponibles" 
-                formControlName="AH_HOR_ID">
+                formControlName="AH_HOR_ID"> -->
+
+                
 
             </div>
             <div class="col-lg-6">
@@ -156,6 +165,10 @@
                 placeholder="Dirección (calle, número, piso)" 
                 formControlName="ACT_DIRECCION">
 
+              <nb-select formControlName="AH_HOR_ID" multiple class="nb-input" placeholder="Seleccionar hora(s)" fullWidth>
+                <nb-option *ngFor="let item of horas" [value]="item.HOR_ID">{{item.HOR_VALOR}}</nb-option>
+              </nb-select>
+
               <!-- <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
@@ -167,8 +180,6 @@
                 fieldSize="medium" 
                 placeholder="Agenda" 
                 formControlName="ACT_AGE_ID"> -->
-
-              
 
             </div>
           </div>
@@ -217,11 +228,9 @@
             </div>
 
             <div class="col-lg-4">
-              <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Motivo(s) de depósito" 
-                formControlName="DM_MOT_ID">
+              <nb-select formControlName="DEM_MOT_ID" multiple class="nb-input" placeholder="Seleccionar motivo(s)" fullWidth>
+                <nb-option *ngFor="let item of motivos" [value]="item.MOT_ID">{{item.MOT_NOMBRE}}</nb-option>
+              </nb-select>
                           
             </div>
 
@@ -234,8 +243,7 @@
               
             </div>
           </div>
-                
-                
+                                
                 <!-- <br><br>
                 <input type="datetime-local" nbInput fullWidth 
                 fieldSize="medium" 
@@ -246,33 +254,12 @@
                 fieldSize="medium" 
                 placeholder="Fecha y hora de cierre de actividad" 
                 formControlName="ACT_FIN"> -->
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                                
                 <!-- <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
                 placeholder="Estado de agenda" 
                 formControlName="AGE_ESTADO"> -->
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-          
 
           <div class="buttons-row mt-4" style="text-align: center;" class="nb-input-label">
             <button nbButton [status]="'primary'" hero (click)="guardar()">
@@ -282,7 +269,6 @@
         </form>
       </nb-card-body>
     </nb-card>
-
 
     {{formActividad.value | json}}
 

@@ -44,9 +44,9 @@ const routes: Routes = [{
         .then(m => m.ExtraComponentsModule),
     },
     {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
+      path: 'access',
+      loadChildren: () => import('./login-new/login-new.module')
+        .then(m => m.LoginNewModule),
     },
     {
       path: 'charts',

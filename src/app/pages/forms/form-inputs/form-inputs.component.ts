@@ -23,17 +23,21 @@ export class FormInputsComponent {
     ACT_NOMBRE_SOLICITANTE: [''],
     ACT_TELEFONO_SOLICITANTE: [''],
     AGE_FECHA: [''],
-    AGE_USR_ID: [''],
+    AGE_USR_ID: [4],
     AGE_ESTADO: "Asignada",
     ACT_AGE_ID: [''],
     AH_HOR_ID: [''],
     DEP_MONTO: [''],
     DEP_FECHA: [''],
-    DM_MOT_ID: [''],
+    DEM_MOT_ID: [''],
 
   });
 
   comunas = []
+  horas = []
+  proyectos = []
+  motivos = []
+
 
   // starRate = 2;
   // heartRate = 4;
@@ -46,11 +50,28 @@ export class FormInputsComponent {
       this.comunas = data['comuna']['rows']
     })
 
+    service.getHoras().subscribe((data: any) => {
+      // console.log(data['comuna']['rows'])
+      this.horas = data['hora']['rows']
+    })
 
+    service.getProyectos().subscribe((data: any) => {
+      console.log(data)
+      this.proyectos = data['proyectos']['rows']
+    })
+
+    service.getMotivos().subscribe((data: any) => {
+      console.log(data)
+      this.motivos = data['motivo']['rows']
+    })
+    
 
   }
 
   guardar(){
+    this.service.postActividades(this.formActividad.value).subscribe((data: any) => {
+      console.log(data)
+    })
     console.log(this.formActividad.value)
   }
 }

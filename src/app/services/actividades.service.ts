@@ -12,5 +12,20 @@ export class ActividadesService {
     return this.http.get('http://localhost:3000/comuna')
   }
 
+  public getHoras(){
+    return this.http.get('http://localhost:3000/hora')
+  }
+
+  public getProyectos(){
+    return this.http.get('http://localhost:3000/proyecto')
+  }
+
+  public getMotivos(){
+    return this.http.get('http://localhost:3000/motivo')
+  }
+
+  public postActividades(request){
+    return this.http.post('http://localhost:3000/actividad',request)
+  }
 
 }
