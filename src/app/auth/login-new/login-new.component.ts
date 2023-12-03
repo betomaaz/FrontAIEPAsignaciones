@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
 import { NbLoginComponent } from '@nebular/auth';
 import { Router } from '@angular/router';
+import { User } from '../../interfaces';
 
 
 @Component({
@@ -18,7 +19,12 @@ export class LoginNewComponent {
 
   })
 
-  submitted = false
+  submitted = false;
+  errorMsj: string = "";
+  error:Boolean = false;
+  usuario: User = {};
+  
+
 
   constructor(private formBuilder: FormBuilder,
     private service: UsuariosService, 
@@ -27,21 +33,36 @@ export class LoginNewComponent {
   }
 
 
-  login() {
-    /*
-    TODO DESCOMENTAR PARA 
-    this.submitted = true
-    this.service.postLogin(this.formLogin.value).subscribe((data: any) => {
-      this.submitted = false
-      this.route.navigate(['pages']);
-    }, error => {
-      console.log(error)
-    }
-    )*/
+  async login() {
 
-    this.route.navigate(['pages']);
-    console.log(this.formLogin.value)
-  }
+    console.log("funciona");
+    // if(this.formLogin.valid){
+      this.usuario.USR_CORREO = this.email?.value;
+      this.usuario.USR_CONTRASENA = this.password?.value;
+    
+  //   this.submitted = true
+  //   this.service.postLogin(this.formLogin.value).subscribe((data: any) => {
+  //     this.submitted = false
+  //     this.route.navigate(['pages']);
+  //   }, error => {
+  //     console.log(error)
+  //   }
+  //   )
+
+      const result = await this.service.postLogin(this.usuario);
+      if(result){
+        console.log(result)
+        this.route.navigate(['/pages'])
+      }else{
+        console.log(this.formLogin.value)
+        this.error = true;
+        this.errorMsj = "El usuario o contraseña son inválidos"
+      }
+    }
+
+    // this.route.navigate(['pages']);
+    // console.log(this.formLogin.value)
+  // }
 
   get email() {
     return this.formLogin.get("USR_CORREO");
