@@ -1,10 +1,110 @@
-<nb-card>
-  <nb-card-header>
-    Usuarios
-  </nb-card-header>
+<div style="min-width:81vw ;">
+  <div class="card p-5">
+    <div class="card-header mt">
+      <h3 class="text-center">Actividades</h3>
+    </div>
 
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table>
-  </nb-card-body>
-</nb-card>
+    <div class="mt-3" style="text-align: right; margin-right: 20px;">
+      <a routerLink="/pages" class="btn btn-primary" style="text-decoration:none">
+        <i class="bi bi-plus" style="font-size: 1.35rem"></i>
+      </a>
+    </div>
+    
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Nombres
+            </th>
+            <th>
+              Apellido
+            </th>
+            <th>
+              Comuna
+            </th>
+            <th>
+              7:00
+            </th>
+            <th>
+              8:00
+            </th>
+            <th>
+              9:00
+            </th>
+            <th>
+              10:00
+            </th>
+            <th>
+              11:00
+            </th>
+            <th>
+              12:00
+            </th>
+            <th>
+              13:00
+            </th>
+            <th>
+              14:00
+            </th>
+            <th>
+              15:00
+            </th>
+            <th>
+              16:00
+            </th>
+            <th>
+              17:00
+            </th>
+            <th>
+              18:00
+            </th>
+            <th>
+              19:00
+            </th>
+            <th>
+              20:00
+            </th>
+            <!-- <th>
+              Acciones
+            </th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actividad of actividad">
+            <td>{{ actividad.USR_NOMBRES }}</td>
+            <td>{{ actividad.USR_AP_PATERNO }}</td>
+            <td>{{ actividad.COM_NOMBRE }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+            <!-- <td>
+              <a routerLink="/pages" [queryParams]="{id:actividad.NOMBRES}">
+                <i class="bi bi-pencil" style="margin-right: 30px; margin-left: 5px;"></i>
+              </a>
+              <a (click)="eliminarUsuario(usuario)">
+                <i class="bi bi-trash"></i>
+              </a>
+            </td> -->
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+</div>

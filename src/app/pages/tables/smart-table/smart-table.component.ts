@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { actividad } from '../../../interfaces';
+import { Router } from '@angular/router';
+import { ActividadesService } from '../../../services/actividades.service';
 
 @Component({
   selector: 'ngx-smart-table',
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
+export class SmartTableComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.obtenerActividad();
+    console.log(this.actividad)
+  }
 
   settings = {
     add: {
@@ -52,9 +60,20 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(
+    // private service: SmartTableData, 
+    private service: ActividadesService,
+    private route: Router) {
+    // const data = this.service.getData();
+    // this.source.load(data);
+  }
+
+  actividad: actividad[] = [];
+
+  obtenerActividad(){
+    this.service.getActividad().subscribe(resp => {
+      this.actividad = resp['actividad']['rows'];
+    })
   }
 
   onDeleteConfirm(event): void {

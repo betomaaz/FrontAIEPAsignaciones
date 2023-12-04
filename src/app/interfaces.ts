@@ -22,3 +22,10 @@ export interface usuario {
     USR_RUT: string,
     ROL_NOMBRE: string
 }
+
+export interface actividad {
+    ACT_ID: number,
+    USR_NOMBRES: string,
+    USR_AP_PATERNO: string,
+    COM_NOMBRE: string
+}
