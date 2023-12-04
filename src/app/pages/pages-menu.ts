@@ -155,20 +155,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //     },
   //   ],
   // },
+
   {
-    title: 'Control De Usuario',
+    title: 'Agenda',
     icon: 'grid-outline',
-    children: [
-      {
-        title: 'Usuarios',
-        link: '/pages/tables/smart-table',
-      },
-      {
-        title: 'Tree Grid',
-        link: '/pages/tables/tree-grid',
-      },
-    ],
+    link: '/pages/tables/smart-table',
   },
+  {
+    title: 'Usuarios',
+    icon: 'grid-outline',
+    link: '/pages/tables/tree-grid',
+  },
+
   // {
   //   title: 'Miscellaneous',
   //   icon: 'shuffle-2-outline',
