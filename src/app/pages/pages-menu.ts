@@ -157,7 +157,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // },
 
   {
-    title: 'Agenda',
+    title: 'Actividades',
     icon: 'grid-outline',
     link: '/pages/tables/smart-table',
   },
