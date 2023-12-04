@@ -47,10 +47,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Forms',
     icon: 'edit-2-outline',
     children: [
-      {
-        title: 'Asignaciones',
-        link: '/pages/forms/inputs',
-      },
+      /* {
+         title: 'Asignaciones',
+         link: '/pages/forms/inputs',
+       },*/
       {
         title: 'Form Layouts',
         link: '/pages/forms/layouts',

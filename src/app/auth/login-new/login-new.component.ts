@@ -24,7 +24,7 @@ export class LoginNewComponent {
   error: Boolean = false;
   usuario: User = {};
 
-
+  AccesoInvalido: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private service: UsuariosService,
@@ -52,10 +52,12 @@ export class LoginNewComponent {
     const result = await this.service.postLogin(this.usuario);
     if (result) {
       console.log(result)
+
       this.route.navigate(['/pages'])
     } else {
       console.log(result)
       this.error = true;
+      this.AccesoInvalido = true;
       this.errorMsj = "El usuario o contraseña son inválidos"
     }
   }

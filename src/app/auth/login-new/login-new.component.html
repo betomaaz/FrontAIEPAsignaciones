@@ -51,6 +51,9 @@
     </ng-container>
   </div>
 
+  <div class="alert" *ngIf="AccesoInvalido">
+    Usuario o contraseña inválidos
+  </div>
 
   <button nbButton fullWidth status="primary" size="large" [disabled]="submitted || !formLogin.valid"
     [class.btn-pulse]="submitted">
