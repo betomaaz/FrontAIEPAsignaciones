@@ -1,34 +1,61 @@
-<nb-card>
-  <nb-card-body>
+<div style="min-width:81vw ;">
+  <div class="card p-5">
+    <div class="card-header mt">
+      <h3 class="text-center">Administración de usuarios</h3>
+    </div>
 
-    <label class="search-label" for="search">Search:</label>
-    <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+    <div class="mt-3" style="text-align: right; margin-right: 20px;">
+      <a routerLink="/pages" class="btn btn-primary" style="text-decoration:none">
+        <i class="bi bi-plus" style="font-size: 1.35rem"></i>
+      </a>
+    </div>
+    
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              Nombres
+            </th>
+            <th>
+              Apellido
+            </th>
+            <th>
+              Rut
+            </th>
+            <th>
+              Correo
+            </th>
+            <th>
+              Rol
+            </th>
+            <th>
+              Acciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuario">
+            <td>{{ usuario.USR_NOMBRES }}</td>
+            <td>{{ usuario.USR_AP_PATERNO }}</td>
+            <td>{{ usuario.USR_RUT }}</td>
+            <td>{{ usuario.USR_CORREO }}</td>
+            <td>{{ usuario.ROL_NOMBRE }}</td>
+            <td>
+              <a routerLink="/pages" [queryParams]="{id:usuario.NOMBRES}">
+                <i class="bi bi-pencil" style="margin-right: 30px; margin-left: 5px;"></i>
+              </a>
+              <a (click)="eliminarUsuario(usuario)">
+                <i class="bi bi-trash"></i>
+              </a>
+            </td>
 
-    <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+          </tr>
+        </tbody>
 
-      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+      </table>
 
-      <ng-container [nbTreeGridColumnDef]="customColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
-          {{customColumn}}
-        </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-          <ngx-fs-icon [kind]="row.data.kind" [expanded]="row.expanded"></ngx-fs-icon>
-          {{row.data[customColumn]}}
-        </td>
-      </ng-container>
+    </div>
 
-      <ng-container *ngFor="let column of defaultColumns; let index = index"
-                    [nbTreeGridColumnDef]="column"
-                    [showOn]="getShowOn(index)">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
-          {{column}}
-        </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
-      </ng-container>
-
-    </table>
-
-  </nb-card-body>
-</nb-card>
+  </div>
+</div>

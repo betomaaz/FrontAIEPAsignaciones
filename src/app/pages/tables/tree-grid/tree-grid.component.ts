@@ -1,5 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { UsuariosService } from '../../../services/usuarios.service';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { usuario } from '../../../interfaces';
+
+
+
+
+
+
+
 
 interface TreeNode<T> {
   data: T;
@@ -21,17 +32,28 @@ interface FSEntry {
 })
 export class TreeGridComponent {
   customColumn = 'name';
-  defaultColumns = [ 'size', 'kind', 'items' ];
-  allColumns = [ this.customColumn, ...this.defaultColumns ];
+  defaultColumns = ['size', 'kind', 'items'];
+  allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
+
+  ngOnInit(): void {
+    this.ObtenerUsuarios();
+    console.log(this.usuario)
+  }
+
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
+    private formBuilder: FormBuilder,
+    private service: UsuariosService,
+    private route: Router) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
+
+  usuario: usuario[] = []
 
   updateSort(sortRequest: NbSortRequest): void {
     this.sortColumn = sortRequest.column;
@@ -44,6 +66,15 @@ export class TreeGridComponent {
     }
     return NbSortDirection.NONE;
   }
+
+  ObtenerUsuarios() {
+    this.service.getUsuarios().subscribe(resp => {
+
+      this.usuario = resp['usuarios']['rows'];
+
+    })
+  }
+
 
   private data: TreeNode<FSEntry>[] = [
     {
@@ -93,6 +124,6 @@ export class FsIconComponent {
   @Input() expanded: boolean;
 
   isDir(): boolean {
-    return this.kind === 'dir';
-  }
+    return this.kind === 'dir';
+  }
 }
