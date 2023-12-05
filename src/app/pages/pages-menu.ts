@@ -167,15 +167,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/tables/tree-grid',
   },
 
-  // {
-  //   title: 'Miscellaneous',
-  //   icon: 'shuffle-2-outline',
-  //   children: [
-  //     {
-  //       title: '404',
-  //       link: '/pages/miscellaneous/404',
-  //     },
-  //   ],
-  // },
+
+  {
+    title: 'Auditoria',
+    icon: 'grid-outline',
+    link: '/pages/miscellaneous/404',
+  },
+
 
 ];

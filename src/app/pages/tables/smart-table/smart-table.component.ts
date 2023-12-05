@@ -16,18 +16,15 @@ export class SmartTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFechaActual();
-    this.obtenerActividad();
-    console.log(this.actividad)
-    console.log(this.getFechaActual())
+
+    this.form.get("AGE_FECHA").valueChanges.subscribe(data => {
+
+      this.obtenerActividad({ AGE_FECHA: data })
+    })
   }
 
 
-  formActividad = this.formBuilder.group({
 
-    AGE_FECHA: [''],
-
-
-  });
 
   form: FormGroup;
   settings = {
@@ -84,9 +81,10 @@ export class SmartTableComponent implements OnInit {
 
   actividad: actividad[] = [];
 
-  obtenerActividad() {
-    console.log(this.formActividad.value)
-    this.service.getActividad(this.formActividad.value).subscribe(resp => {
+  obtenerActividad(AGE_FECHA) {
+
+    console.log(AGE_FECHA)
+    this.service.getActividad(AGE_FECHA).subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
 
       this.actividad.forEach(persona => {
@@ -120,6 +118,11 @@ export class SmartTableComponent implements OnInit {
     }
   }
 
+  filtro() {
+
+    console.log(this.form.value)
+
+  }
 
   getFechaActual(): string {
     const today = new Date();

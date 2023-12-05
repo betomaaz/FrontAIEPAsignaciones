@@ -29,7 +29,7 @@ export class ActividadesService {
   }
 
   public getActividad(AGE_FECHA) {
-    return this.http.get(`http://localhost:3000/actividad/${AGE_FECHA}`)
+    return this.http.post(`http://localhost:3000/actividad/lista`, AGE_FECHA)
   }
 
 }

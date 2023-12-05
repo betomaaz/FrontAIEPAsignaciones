@@ -4,10 +4,15 @@
       <h3 class="text-center">Registro De Actividades</h3>
     </div>
 
-    <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 20px;">
-      <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
-        formControlName="AGE_FECHA">
-    </div>
+
+    <form [formGroup]="form">
+      <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 20px;">
+        <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
+          formControlName="AGE_FECHA">
+      </div>
+
+    </form>
+
     <div class="card-body">
       <table class="table table-striped">
         <thead>
