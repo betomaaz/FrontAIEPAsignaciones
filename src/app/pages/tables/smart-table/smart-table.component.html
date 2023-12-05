@@ -65,9 +65,9 @@
             <th>
               20:00
             </th>
-            <!-- <th>
+            <th>
               Acciones
-            </th> -->
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -75,29 +75,55 @@
             <td>{{ acti.USR_NOMBRES }}</td>
             <td>{{ acti.USR_AP_PATERNO }}</td>
             <td>{{ acti.COM_NOMBRE }}</td>
-            <td [ngClass]="getHora(acti,7)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,8)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,9)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,10)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,11)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,12)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,13)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,14)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,15)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,16)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,17)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,18)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,19)">{{acti.ACT_NOMBRE}}</td>
-            <td [ngClass]="getHora(acti,20)">{{acti.ACT_NOMBRE}}</td>
+            <td [ngClass]="getHora(acti,7)">
+              <div *ngIf="getHora(acti,7) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,8)">
+              <div *ngIf="getHora(acti,8) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,9)">
+              <div *ngIf="getHora(acti,9) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,10)">
+              <div *ngIf="getHora(acti,10) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,11)">
+              <div *ngIf="getHora(acti,11) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,12)">
+              <div *ngIf="getHora(acti,12) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,13)">
+              <div *ngIf="getHora(acti,13) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,14)">
+              <div *ngIf="getHora(acti,14) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,15)">
+              <div *ngIf="getHora(acti,15) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,16)">
+              <div *ngIf="getHora(acti,16) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,17)">
+              <div *ngIf="getHora(acti,17) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,18)">
+              <div *ngIf="getHora(acti,18) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,19)">
+              <div *ngIf="getHora(acti,19) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
+            <td [ngClass]="getHora(acti,20)">
+              <div *ngIf="getHora(acti,20) != 'blanco'">{{acti.ACT_NOMBRE}}</div>
+            </td>
 
-            <!-- <td>
+            <td>
               <a routerLink="/pages" [queryParams]="{id:actividad.NOMBRES}">
                 <i class="bi bi-pencil" style="margin-right: 30px; margin-left: 5px;"></i>
               </a>
-              <a (click)="eliminarUsuario(usuario)">
-                <i class="bi bi-trash"></i>
-              </a>
-            </td> -->
+
+            </td>
 
           </tr>
         </tbody>
