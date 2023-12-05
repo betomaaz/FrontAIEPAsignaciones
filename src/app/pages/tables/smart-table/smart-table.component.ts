@@ -61,11 +61,9 @@ export class SmartTableComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(
-    // private service: SmartTableData, 
     private service: ActividadesService,
     private route: Router) {
-    // const data = this.service.getData();
-    // this.source.load(data);
+
   }
 
   actividad: actividad[] = [];
@@ -73,7 +71,25 @@ export class SmartTableComponent implements OnInit {
   obtenerActividad() {
     this.service.getActividad().subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
-      console.log(this.actividad)
+
+      this.actividad.forEach(persona => {
+
+        if (persona['actividades']) {
+          // Comenzamos a buscar las horas
+          // 
+          persona['actividades'].forEach(actividad => {
+
+            if (actividad != null) {
+              persona['ACT_ESTADO'] = actividad['ACT_ESTADO']
+
+              actividad['horas'].forEach(hora => {
+                persona['HORA_' + hora] = actividad['ACT_NOMBRE']
+              })
+            }
+
+          });
+        }
+      })
     })
   }
 
@@ -85,13 +101,12 @@ export class SmartTableComponent implements OnInit {
     }
   }
 
-  getHora(actividad: any, hora: any) {
+  editarActividad(actividad){
+    console.log(actividad)
+  }
 
-    if (actividad.horas == null) {
-      return "blanco"
-    }
-
-    if (actividad.horas.includes(hora)) {
+  getEstado(actividad: any, hora) {
+    if (actividad['HORA_' + hora] != undefined) {
 
       if (actividad.ACT_ESTADO == "Pendiente")
         return "Pendiente"
@@ -101,8 +116,8 @@ export class SmartTableComponent implements OnInit {
 
       if (actividad.ACT_ESTADO == "Finalizada")
         return "Finalizada"
-    }
 
+    }
     return "blanco";
   }
 

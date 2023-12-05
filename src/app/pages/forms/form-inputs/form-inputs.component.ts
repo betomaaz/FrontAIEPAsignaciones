@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { ActividadesService } from '../../../services/actividades.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { ActividadesService } from '../../../services/actividades.service';
   styleUrls: ['./form-inputs.component.scss'],
   templateUrl: './form-inputs.component.html',
 })
-export class FormInputsComponent {
+export class FormInputsComponent implements OnInit{
 
   formActividad = this.formBuilder.group({
     ACT_NOMBRE: ['', Validators.required],
@@ -17,13 +18,11 @@ export class FormInputsComponent {
     ACT_ESTADO: "Pendiente",
     ACT_COM_ID: [''],
     ACT_DIRECCION: [''],
-    // ACT_INICIO: [''],
-    // ACT_FIN: [''],
     ACT_CORREO_SOLICITANTE: [''],
     ACT_NOMBRE_SOLICITANTE: [''],
     ACT_TELEFONO_SOLICITANTE: [''],
     AGE_FECHA: [''],
-    AGE_USR_ID: [4],
+    AGE_USR_ID: [],
     AGE_ESTADO: "Asignada",
     ACT_AGE_ID: [''],
     AH_HOR_ID: [''],
@@ -37,41 +36,45 @@ export class FormInputsComponent {
   horas = []
   proyectos = []
   motivos = []
+  usuario_id = -1
 
-
-  // starRate = 2;
-  // heartRate = 4;
-  // radioGroupValue = 'This is value 2';
-
-
-  constructor(private formBuilder: FormBuilder, private service:ActividadesService){
+  constructor(private formBuilder: FormBuilder, 
+    private route: ActivatedRoute,
+    private router: Router ,
+    private service:ActividadesService){
     service.getComunas().subscribe((data: any) => {
-      // console.log(data['comuna']['rows'])
       this.comunas = data['comuna']['rows']
     })
 
     service.getHoras().subscribe((data: any) => {
-      // console.log(data['comuna']['rows'])
       this.horas = data['hora']['rows']
     })
 
     service.getProyectos().subscribe((data: any) => {
-      console.log(data)
       this.proyectos = data['proyectos']['rows']
     })
 
     service.getMotivos().subscribe((data: any) => {
-      console.log(data)
       this.motivos = data['motivo']['rows']
     })
     
 
   }
 
+  ngOnInit() {
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params); 
+        this.usuario_id = params.id;
+        
+      }
+    );
+  }
+
   guardar(){
+    this.formActividad.get('AGE_USR_ID').patchValue(this.usuario_id)
     this.service.postActividades(this.formActividad.value).subscribe((data: any) => {
-      console.log(data)
+      this.router.navigate(['/pages/tables/smart-table'])
     })
-    console.log(this.formActividad.value)
   }
 }
