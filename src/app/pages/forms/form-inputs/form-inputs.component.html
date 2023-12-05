@@ -94,7 +94,7 @@
     <nb-card>
 
       <nb-card-header class="text-center">
-        <H6>Registrar actividad</H6>
+        <H6>Registrar Actividad</H6>
       </nb-card-header>
 
       <nb-card-body>
@@ -102,10 +102,7 @@
           <div class="row">
             <div class="col-lg-6">
 
-              <input type="text" nbInput fullWidth
-                class="nb-input"
-                fieldSize="medium"
-                placeholder="Nombre actividad"
+              <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Nombre actividad"
                 formControlName="ACT_NOMBRE">
 
               <!-- 
@@ -123,17 +120,14 @@
               <nb-select formControlName="ACT_COM_ID" class="nb-input" placeholder="Seleccionar Comuna" fullWidth>
                 <nb-option *ngFor="let item of comunas" [value]="item.COM_ID">{{item.COM_NOMBRE}}</nb-option>
               </nb-select>
-<!-- 
+              <!-- 
               <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
                 placeholder="Seleccionar Comuna" 
                 formControlName="ACT_COM_ID"> -->
-              
-              <input type="date" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Fecha de agenda" 
+
+              <input type="date" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Fecha de agenda"
                 formControlName="AGE_FECHA">
 
               <!-- <input type="text" nbInput fullWidth 
@@ -142,16 +136,12 @@
                 placeholder="Seleccionar horas disponibles" 
                 formControlName="AH_HOR_ID"> -->
 
-                
+
 
             </div>
             <div class="col-lg-6">
-              <input type="text" nbInput fullWidth
-                class="nb-input"
-                fieldSize="medium"
-                placeholder="Descripción"
-                formControlName="ACT_DESCRIPCION"
-                style="height: 99px;">
+              <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Descripción"
+                formControlName="ACT_DESCRIPCION" style="height: 99px;">
 
               <!-- <input type="text" nbInput fullWidth
               class="nb-input"
@@ -159,13 +149,11 @@
               placeholder="Seleccionar estado"
               formControlName="ACT_ESTADO"> -->
 
-              <input type="text" nbInput fullWidth
-                class="nb-input"
-                fieldSize="medium"
-                placeholder="Dirección (calle, número, piso)" 
-                formControlName="ACT_DIRECCION">
+              <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium"
+                placeholder="Dirección (calle, número, piso)" formControlName="ACT_DIRECCION">
 
-              <nb-select formControlName="AH_HOR_ID" multiple class="nb-input" placeholder="Seleccionar hora(s)" fullWidth>
+              <nb-select formControlName="AH_HOR_ID" multiple class="nb-input" placeholder="Seleccionar hora(s)"
+                fullWidth>
                 <nb-option *ngFor="let item of horas" [value]="item.HOR_ID">{{item.HOR_VALOR}}</nb-option>
               </nb-select>
 
@@ -184,34 +172,25 @@
             </div>
           </div>
 
-        <h6 class="nb-input-label" style="text-align: center;">Datos de solicitante</h6>
+          <h6 class="nb-input-label" style="text-align: center;">Datos de solicitante</h6>
 
           <div class="row">
             <div class="col-lg-4">
-              <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Nombre y Apellido del solicitante" 
-                formControlName="ACT_NOMBRE_SOLICITANTE">            
-              
+              <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium"
+                placeholder="Nombre y Apellido del solicitante" formControlName="ACT_NOMBRE_SOLICITANTE">
+
             </div>
 
             <div class="col-lg-4">
-              <input type="email" nbInput fullWidth
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Correo del solicitante" 
-                formControlName="ACT_CORREO_SOLICITANTE">
-                          
+              <input type="email" nbInput fullWidth class="nb-input" fieldSize="medium"
+                placeholder="Correo del solicitante" formControlName="ACT_CORREO_SOLICITANTE">
+
             </div>
 
             <div class="col-lg-4">
-              <input type="tel" nbInput fullWidth
-                class="nb-input"
-                fieldSize="medium"
-                placeholder="Telefono del solicitante"
-                formControlName="ACT_TELEFONO_SOLICITANTE">            
-              
+              <input type="tel" nbInput fullWidth class="nb-input" fieldSize="medium"
+                placeholder="Telefono del solicitante" formControlName="ACT_TELEFONO_SOLICITANTE">
+
             </div>
           </div>
 
@@ -219,32 +198,27 @@
 
           <div class="row">
             <div class="col-lg-4">
-              <input type="number" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Depósito (en CLP)" 
-                formControlName="DEP_MONTO">            
-              
+              <input type="number" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Depósito (en CLP)"
+                formControlName="DEP_MONTO">
+
             </div>
 
             <div class="col-lg-4">
-              <nb-select formControlName="DEM_MOT_ID" multiple class="nb-input" placeholder="Seleccionar motivo(s)" fullWidth>
+              <nb-select formControlName="DEM_MOT_ID" multiple class="nb-input" placeholder="Seleccionar motivo(s)"
+                fullWidth>
                 <nb-option *ngFor="let item of motivos" [value]="item.MOT_ID">{{item.MOT_NOMBRE}}</nb-option>
               </nb-select>
-                          
+
             </div>
 
             <div class="col-lg-4">
-              <input type="datetime-local" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Fecha y hora de realización de depósito" 
-                formControlName="DEP_FECHA">            
-              
+              <input type="datetime-local" nbInput fullWidth class="nb-input" fieldSize="medium"
+                placeholder="Fecha y hora de realización de depósito" formControlName="DEP_FECHA">
+
             </div>
           </div>
-                                
-                <!-- <br><br>
+
+          <!-- <br><br>
                 <input type="datetime-local" nbInput fullWidth 
                 fieldSize="medium" 
                 placeholder="Fecha y hora de incio de actividad"
@@ -254,8 +228,8 @@
                 fieldSize="medium" 
                 placeholder="Fecha y hora de cierre de actividad" 
                 formControlName="ACT_FIN"> -->
-                                
-                <!-- <input type="text" nbInput fullWidth 
+
+          <!-- <input type="text" nbInput fullWidth 
                 class="nb-input"
                 fieldSize="medium" 
                 placeholder="Estado de agenda" 

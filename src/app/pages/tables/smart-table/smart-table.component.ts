@@ -16,7 +16,7 @@ export class SmartTableComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerActividad();
     console.log(this.actividad)
-  }
+  }
 
   settings = {
     add: {
@@ -70,9 +70,10 @@ export class SmartTableComponent implements OnInit {
 
   actividad: actividad[] = [];
 
-  obtenerActividad(){
+  obtenerActividad() {
     this.service.getActividad().subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
+      console.log(this.actividad)
     })
   }
 
@@ -83,4 +84,26 @@ export class SmartTableComponent implements OnInit {
       event.confirm.reject();
     }
   }
+
+  getHora(actividad: any, hora: any) {
+
+    if (actividad.horas == null) {
+      return "blanco"
+    }
+
+    if (actividad.horas.includes(hora)) {
+
+      if (actividad.ACT_ESTADO == "Pendiente")
+        return "Pendiente"
+
+      if (actividad.ACT_ESTADO == "Iniciada")
+        return "Iniciada"
+
+      if (actividad.ACT_ESTADO == "Finalizada")
+        return "Finalizada"
+    }
+
+    return "blanco";
+  }
+
 }
