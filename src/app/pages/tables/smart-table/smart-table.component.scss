@@ -18,13 +18,27 @@
   background: yellow;
 }
 
-.Iniciado {
+.Iniciada {
 
   background: blue;
 
 }
 
-.Finalizado {
+
+.Finalizada {
 
   background: green;
+
+}
+
+.small-date-input {
+
+  width: 150px;
+  float: right;
+  /* Ajusta el ancho según lo necesites */
+}
+
+.table td {
+  font-size: 12px;
+  /* Tamaño de fuente más pequeño */
 }

@@ -6,30 +6,30 @@ import { Injectable } from '@angular/core';
 })
 export class ActividadesService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public getComunas(){
+  public getComunas() {
     return this.http.get('http://localhost:3000/comuna')
   }
 
-  public getHoras(){
+  public getHoras() {
     return this.http.get('http://localhost:3000/hora')
   }
 
-  public getProyectos(){
+  public getProyectos() {
     return this.http.get('http://localhost:3000/proyecto')
   }
 
-  public getMotivos(){
+  public getMotivos() {
     return this.http.get('http://localhost:3000/motivo')
   }
 
-  public postActividades(request){
-    return this.http.post('http://localhost:3000/actividad',request)
+  public postActividades(request) {
+    return this.http.post('http://localhost:3000/actividad', request)
   }
 
-  public getActividad(){
-    return this.http.get('http://localhost:3000/actividad')
+  public getActividad(AGE_FECHA) {
+    return this.http.get(`http://localhost:3000/actividad/${AGE_FECHA}`)
   }
 
 }

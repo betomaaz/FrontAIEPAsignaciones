@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./form-inputs.component.scss'],
   templateUrl: './form-inputs.component.html',
 })
-export class FormInputsComponent implements OnInit{
+export class FormInputsComponent implements OnInit {
 
   formActividad = this.formBuilder.group({
     ACT_NOMBRE: ['', Validators.required],
@@ -37,11 +37,12 @@ export class FormInputsComponent implements OnInit{
   proyectos = []
   motivos = []
   usuario_id = -1
+  agendaFecha = ""
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router ,
-    private service:ActividadesService){
+    private router: Router,
+    private service: ActividadesService) {
     service.getComunas().subscribe((data: any) => {
       this.comunas = data['comuna']['rows']
     })
@@ -57,22 +58,24 @@ export class FormInputsComponent implements OnInit{
     service.getMotivos().subscribe((data: any) => {
       this.motivos = data['motivo']['rows']
     })
-    
+
 
   }
 
   ngOnInit() {
     this.route.queryParams
       .subscribe(params => {
-        console.log(params); 
+        console.log(params);
         this.usuario_id = params.id;
-        
+        this.agendaFecha = params.AGE_FECHA;
+
       }
-    );
+      );
   }
 
-  guardar(){
+  guardar() {
     this.formActividad.get('AGE_USR_ID').patchValue(this.usuario_id)
+    this.formActividad.get('AGE_FECHA').patchValue(this.agendaFecha)
     this.service.postActividades(this.formActividad.value).subscribe((data: any) => {
       this.router.navigate(['/pages/tables/smart-table'])
     })

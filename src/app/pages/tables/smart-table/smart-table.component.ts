@@ -5,6 +5,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 import { actividad } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { ActividadesService } from '../../../services/actividades.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -14,10 +15,21 @@ import { ActividadesService } from '../../../services/actividades.service';
 export class SmartTableComponent implements OnInit {
 
   ngOnInit(): void {
+    this.getFechaActual();
     this.obtenerActividad();
     console.log(this.actividad)
+    console.log(this.getFechaActual())
   }
 
+
+  formActividad = this.formBuilder.group({
+
+    AGE_FECHA: [''],
+
+
+  });
+
+  form: FormGroup;
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -62,14 +74,19 @@ export class SmartTableComponent implements OnInit {
 
   constructor(
     private service: ActividadesService,
-    private route: Router) {
+    private route: Router, private formBuilder: FormBuilder) {
+
+    this.form = this.formBuilder.group({
+      AGE_FECHA: [this.getFechaActual()]
+    });
 
   }
 
   actividad: actividad[] = [];
 
   obtenerActividad() {
-    this.service.getActividad().subscribe(resp => {
+    console.log(this.formActividad.value)
+    this.service.getActividad(this.formActividad.value).subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
 
       this.actividad.forEach(persona => {
@@ -93,6 +110,8 @@ export class SmartTableComponent implements OnInit {
     })
   }
 
+
+
   onDeleteConfirm(event): void {
     if (window.confirm('¿Seguro que desea eliminar este usuario?')) {
       event.confirm.resolve();
@@ -101,21 +120,31 @@ export class SmartTableComponent implements OnInit {
     }
   }
 
-  editarActividad(actividad){
+
+  getFechaActual(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    return `${day}-${month}-${year}`;
+  }
+
+
+  editarActividad(actividad) {
     console.log(actividad)
   }
 
   getEstado(actividad: any, hora) {
     if (actividad['HORA_' + hora] != undefined) {
 
+      if (actividad.ACT_ESTADO == "Finalizada")
+        return "Finalizada"
+
       if (actividad.ACT_ESTADO == "Pendiente")
         return "Pendiente"
 
       if (actividad.ACT_ESTADO == "Iniciada")
         return "Iniciada"
-
-      if (actividad.ACT_ESTADO == "Finalizada")
-        return "Finalizada"
 
     }
     return "blanco";

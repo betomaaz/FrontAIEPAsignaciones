@@ -1,22 +1,28 @@
 <div style="min-width:81vw ;">
   <div class="card p-5">
     <div class="card-header mt">
-      <h3 class="text-center">Actividades</h3>
+      <h3 class="text-center">Registro De Actividades</h3>
     </div>
 
-
+    <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 20px;">
+      <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
+        formControlName="AGE_FECHA">
+    </div>
     <div class="card-body">
       <table class="table table-striped">
         <thead>
           <tr>
             <th>
-              Nombres
-            </th>
-            <th>
-              Apellido
+              Región
             </th>
             <th>
               Comuna
+            </th>
+            <th>
+              Nombre
+            </th>
+            <th>
+              Apellido
             </th>
             <th>
               7:00
@@ -67,25 +73,55 @@
         </thead>
         <tbody>
           <tr *ngFor="let acti of actividad">
+            <td>{{ acti.REG_NOMBRE }}</td>
+            <td>{{ acti.COM_NOMBRE }}</td>
             <td>{{ acti.USR_NOMBRES }}</td>
             <td>{{ acti.USR_AP_PATERNO }}</td>
-            <td>{{ acti.COM_NOMBRE }}</td>
-            <td [ngClass]="getEstado(acti,7)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_7}}</div></td>
-            <td [ngClass]="getEstado(acti,8)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_8}}</div></td>
-            <td [ngClass]="getEstado(acti,9)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_9}}</div></td>
-            <td [ngClass]="getEstado(acti,10)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_10}}</div></td>
-            <td [ngClass]="getEstado(acti,11)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_11}}</div></td>
-            <td [ngClass]="getEstado(acti,12)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_12}}</div></td>
-            <td [ngClass]="getEstado(acti,13)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_13}}</div></td>
-            <td [ngClass]="getEstado(acti,14)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_14}}</div></td>
-            <td [ngClass]="getEstado(acti,15)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_15}}</div></td>
-            <td [ngClass]="getEstado(acti,16)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_16}}</div></td>
-            <td [ngClass]="getEstado(acti,17)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_17}}</div></td>
-            <td [ngClass]="getEstado(acti,18)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_18}}</div></td>
-            <td [ngClass]="getEstado(acti,19)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_19}}</div></td>
-            <td [ngClass]="getEstado(acti,20)"><div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_20}}</div></td>
+
+            <td [ngClass]="getEstado(acti,7)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_7}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,8)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_8}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,9)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_9}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,10)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_10}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,11)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_11}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,12)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_12}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,13)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_13}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,14)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_14}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,15)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_15}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,16)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_16}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,17)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_17}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,18)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_18}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,19)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_19}}</div>
+            </td>
+            <td [ngClass]="getEstado(acti,20)">
+              <div (click)="editarActividad(acti)" style="cursor: pointer;">{{acti.HORA_20}}</div>
+            </td>
             <td>
-              <a routerLink="/pages/forms/inputs" [queryParams]="{id:acti.USR_ID}">
+              <a routerLink="/pages/forms/inputs" [queryParams]="{id:acti.USR_ID , AGE_FECHA:acti.AGE_FECHA}">
                 <i class="bi bi-pencil" style="margin-right: 30px; margin-left: 5px;"></i>
               </a>
             </td>
@@ -96,7 +132,6 @@
       </table>
 
     </div>
-
       
   </div>
 </div>
