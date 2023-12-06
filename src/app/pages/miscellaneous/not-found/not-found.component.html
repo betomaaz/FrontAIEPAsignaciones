@@ -1,49 +1,55 @@
 <div style="min-width:81vw ;">
   <div class="card p-5">
     <div class="card-header mt">
-      <h3 class="text-center">Registro De Actividades</h3>
+      <h3 class="text-center">Auditoria De Actividades</h3>
     </div>
 
 
-    <!-- <form [formGroup]="form">
-      <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 20px;">
-        <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
-          formControlName="AGE_FECHA">
-      </div>
-
-    </form> -->
-
     <div class="card-body">
-      <table class="table table-striped">
-        <thead>
+      <form [formGroup]="form">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 50px;">
+          <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
+            formControlName="AGE_FECHA">
+        </div>
+      </form>
+
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
           <tr>
-            <th>
-              Región
-            </th>
-            <th>
-              Comuna
-            </th>
             <th>
               Nombre
             </th>
             <th>
               Apellido
             </th>
-
             <th>
-              Acciones
+              Actividad
+            </th>
+            <th>
+              Cliente
+            </th>
+            <th>
+              Proyecto
+            </th>
+            <th>
+              Calificación
             </th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr >
-            <td>{{ acti.REG_NOMBRE }}</td>
-            <td>{{ acti.COM_NOMBRE }}</td>
-            <td>{{ acti.USR_NOMBRES }}</td>
-            <td>{{ acti.USR_AP_PATERNO }}</td>
-        
+          <tr *ngFor="let acti of dataAuditor">
 
-          </tr> -->
+
+            <td>{{ acti.USR_NOMBRE }}</td>
+            <td>{{ acti.USR_AP_PATERNO }}</td>
+            <td>{{ acti.ACT_NOMBRE}}</td>
+            <td>{{ acti.CLI_NOMBRE}}</td>
+            <td>{{ acti.PRO_NOMBRE }}</td>
+            <td>{{ acti.CAL_COMENTARIO }}</td>
+          </tr>
+
+
         </tbody>
 
       </table>

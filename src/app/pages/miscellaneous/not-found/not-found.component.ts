@@ -1,5 +1,8 @@
-import { NbMenuService } from '@nebular/theme';
+import { NbDialogService, NbMenuService } from '@nebular/theme';
 import { Component } from '@angular/core';
+import { ActividadesService } from '../../../services/actividades.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { actividad } from '../../../interfaces';
 
 @Component({
   selector: 'ngx-not-found',
@@ -8,10 +11,42 @@ import { Component } from '@angular/core';
 })
 export class NotFoundComponent {
 
-  constructor(private menuService: NbMenuService) {
+
+  ngOnInit(): void {
+
+    this.form.get("AGE_FECHA").valueChanges.subscribe(data => {
+
+      this.dataAuditor({ AGE_FECHA: data })
+    })
   }
+
+
+
+
+  constructor(private menuService: NbMenuService,
+    private service: ActividadesService,
+    private dialogService: NbDialogService,
+    private formBuilder: FormBuilder) {
+
+
+  }
+
+  form: FormGroup;
+
 
   goToHome() {
     this.menuService.navigateHome();
+  }
+
+
+  actividad: actividad[] = [];
+
+  dataAuditor(AGE_FECHA) {
+    this.service.getAuditor(AGE_FECHA).subscribe(resp => {
+
+      this.actividad = resp['auditor']['rows'];
+      console.log(this.actividad)
+
+    })
   }
 }

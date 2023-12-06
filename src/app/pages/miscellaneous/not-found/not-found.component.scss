@@ -1,6 +1,8 @@
 .flex-centered {
   margin: auto;
 }
+
+
 nb-card-body {
   display: flex;
 }
@@ -17,4 +19,22 @@ nb-card-body {
 
 .home-button {
   margin-bottom: 2rem;
+}
+
+
+.result-from-dialog {
+  flex-direction: column;
+}
+
+.form-input-card {
+  nb-card-body {
+    display: block;
+  }
+}
+
+.small-date-input {
+
+  width: 150px;
+  float: right;
+  /* Ajusta el ancho según lo necesites */
 }

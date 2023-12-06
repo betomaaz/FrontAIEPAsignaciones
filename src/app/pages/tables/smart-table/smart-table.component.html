@@ -5,16 +5,16 @@
     </div>
 
     <div class="card-body">
-
       <form [formGroup]="form">
-        <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 50px;">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 50px;">
           <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
             formControlName="AGE_FECHA">
         </div>
       </form>
 
-      <table class="table table-striped">
-        <thead>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
           <tr>
             <th>
               Región
@@ -101,28 +101,28 @@
               <div (click)="editarActividad(acti,dialog, 12)" style="cursor: pointer;">{{acti.HORA_12}}</div>
             </td>
             <td [ngClass]="getEstado(acti,13)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_13}}</div>
+              <div (click)="editarActividad(acti,dialog,13)" style="cursor: pointer;">{{acti.HORA_13}}</div>
             </td>
             <td [ngClass]="getEstado(acti,14)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_14}}</div>
+              <div (click)="editarActividad(acti,dialog,14)" style="cursor: pointer;">{{acti.HORA_14}}</div>
             </td>
             <td [ngClass]="getEstado(acti,15)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_15}}</div>
+              <div (click)="editarActividad(acti,dialog,15)" style="cursor: pointer;">{{acti.HORA_15}}</div>
             </td>
             <td [ngClass]="getEstado(acti,16)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_16}}</div>
+              <div (click)="editarActividad(acti,dialog,16)" style="cursor: pointer;">{{acti.HORA_16}}</div>
             </td>
             <td [ngClass]="getEstado(acti,17)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_17}}</div>
+              <div (click)="editarActividad(acti,dialog,17)" style="cursor: pointer;">{{acti.HORA_17}}</div>
             </td>
             <td [ngClass]="getEstado(acti,18)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_18}}</div>
+              <div (click)="editarActividad(acti,dialog,18)" style="cursor: pointer;">{{acti.HORA_18}}</div>
             </td>
             <td [ngClass]="getEstado(acti,19)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_19}}</div>
+              <div (click)="editarActividad(acti,dialog,19)" style="cursor: pointer;">{{acti.HORA_19}}</div>
             </td>
             <td [ngClass]="getEstado(acti,20)">
-              <div (click)="editarActividad(acti,dialog)" style="cursor: pointer;">{{acti.HORA_20}}</div>
+              <div (click)="editarActividad(acti,dialog,20)" style="cursor: pointer;">{{acti.HORA_20}}</div>
             </td>
             <td>
               <a routerLink="/pages/forms/inputs" [queryParams]="{id:acti.USR_ID , AGE_FECHA:acti.AGE_FECHA}">
@@ -147,13 +147,24 @@
     <nb-card-header>Detalle</nb-card-header>
     <nb-card-body>
 
-      <p>{{actividad_seleccionada}}</p>
-      {{ data.ACT_DESCRIPCION}}
+      <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
+      <p><b>Cliente: </b>{{data[0].CLI_NOMBRE}}</p>
+      <p><b>Solicitante: </b> {{data[0].ACT_NOMBRE_SOLICITANTE}}</p>
+      <p><b>Solicitante:</b> {{data[0].ACT_DIRECCION}}</p>
+      <p><b>Monto Depósito:</b> {{data[0].DEP_MONTO}}</p>
 
     </nb-card-body>
 
-    <nb-card-footer>
+    <nb-card-footer class="d-flex justify-content-between">
       <button nbButton (click)="ref.close()">Cerrar</button>
+
+      <div>
+        <button nbButton (click)="ref.close()">Iniciar</button>
+      </div>
+
+      <div>
+        <button nbButton (click)="ref.close()">Finalizar</button>
+      </div>
     </nb-card-footer>
   </nb-card>
 </ng-template>

@@ -83,3 +83,10 @@
   font-size: 12px;
   /* Tamaño de fuente más pequeño */
 }
+
+.ancho-mas-grande {
+  width: 80% !important;
+  /* Cambia el ancho según tus necesidades */
+  max-width: 900px !important;
+  /* Establece el ancho máximo */
+}

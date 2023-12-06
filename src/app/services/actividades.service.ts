@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,21 @@ export class ActividadesService {
   public getActividad(AGE_FECHA) {
     return this.http.post(`http://localhost:3000/actividad/lista`, AGE_FECHA)
   }
+
+
+  getModal(act_id) {
+
+
+    return this.http.post(`http://localhost:3000/actividad/modal`, act_id)
+  }
+
+  getAuditor(fecha) {
+    return this.http.post(`http://localhost:3000/actividad/auditor`, fecha)
+  }
+
+
+
+
+
 
 }

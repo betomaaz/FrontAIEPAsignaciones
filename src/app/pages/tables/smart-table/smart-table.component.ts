@@ -28,6 +28,7 @@ export class SmartTableComponent implements OnInit {
 
 
   form: FormGroup;
+
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -100,7 +101,7 @@ export class SmartTableComponent implements OnInit {
 
               actividad['horas'].forEach(hora => {
                 persona['HORA_' + hora] = actividad['ACT_NOMBRE']
-                persona['HORA_'+hora+'_ACT'] = actividad['ACT_ID']
+                persona['HORA_' + hora + '_ACT'] = actividad['ACT_ID']
 
               })
             }
@@ -138,19 +139,29 @@ export class SmartTableComponent implements OnInit {
   actividad_seleccionada;
 
 
-  editarActividad(actividad, dialog:TemplateRef<any>, hora) {
+  editarActividad(actividad, dialog: TemplateRef<any>, hora) {
 
-    this.actividad_seleccionada = actividad['HORA_' + hora + '_ACT'] 
+    this.actividad_seleccionada = actividad['HORA_' + hora + '_ACT']
 
     // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
     // Pasar el id actividad_seleccionada
 
-    this.dialogService.open(
-      dialog,
-      {
-        context: actividad,
-        closeOnEsc: false,
-      });
+    this.service.getModal({ ACT_ID: this.actividad_seleccionada }).subscribe(
+      (data) => {
+
+        const prueba = data;
+        console.log('NOMBRE:', prueba['data_act']['rows']);
+
+        this.dialogService.open(
+          dialog,
+          {
+            context: prueba['data_act']['rows'],
+            closeOnEsc: false,
+          });
+      }
+    );
+
+
   }
 
   getEstado(actividad: any, hora) {
