@@ -5,13 +5,13 @@
     </div>
 
     <div class="card-body">
-    
-        <form [formGroup]="form">
-          <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 50px;">
-            <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
-              formControlName="AGE_FECHA">
-          </div>
-        </form>
+
+      <form [formGroup]="form">
+        <div style="min-width: 81vw; display: flex; justify-content: flex-end; margin-bottom: 50px;">
+          <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
+            formControlName="AGE_FECHA">
+        </div>
+      </form>
 
       <table class="table table-striped">
         <thead>
@@ -144,14 +144,16 @@
 
 <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>
-    <nb-card-header>Template Dialog</nb-card-header>
+    <nb-card-header>Detalle</nb-card-header>
     <nb-card-body>
-      
+
       <p>{{actividad_seleccionada}}</p>
-      {{ data.USR_NOMBRES}}</nb-card-body>
-    
+      {{ data.ACT_DESCRIPCION}}
+
+    </nb-card-body>
+
     <nb-card-footer>
-      <button nbButton (click)="ref.close()">Close Dialog</button>
+      <button nbButton (click)="ref.close()">Cerrar</button>
     </nb-card-footer>
   </nb-card>
 </ng-template>
