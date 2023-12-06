@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -6,6 +6,7 @@ import { actividad } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { ActividadesService } from '../../../services/actividades.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NbDialogService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -71,7 +72,8 @@ export class SmartTableComponent implements OnInit {
 
   constructor(
     private service: ActividadesService,
-    private route: Router, private formBuilder: FormBuilder) {
+    private dialogService: NbDialogService,
+    private formBuilder: FormBuilder) {
 
     this.form = this.formBuilder.group({
       AGE_FECHA: [this.getFechaActual()]
@@ -83,7 +85,6 @@ export class SmartTableComponent implements OnInit {
 
   obtenerActividad(AGE_FECHA) {
 
-    console.log(AGE_FECHA)
     this.service.getActividad(AGE_FECHA).subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
 
@@ -99,6 +100,8 @@ export class SmartTableComponent implements OnInit {
 
               actividad['horas'].forEach(hora => {
                 persona['HORA_' + hora] = actividad['ACT_NOMBRE']
+                persona['HORA_'+hora+'_ACT'] = actividad['ACT_ID']
+
               })
             }
 
@@ -132,9 +135,22 @@ export class SmartTableComponent implements OnInit {
     return `${day}-${month}-${year}`;
   }
 
+  actividad_seleccionada;
 
-  editarActividad(actividad) {
-    console.log(actividad)
+
+  editarActividad(actividad, dialog:TemplateRef<any>, hora) {
+
+    this.actividad_seleccionada = actividad['HORA_' + hora + '_ACT'] 
+
+    // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
+    // Pasar el id actividad_seleccionada
+
+    this.dialogService.open(
+      dialog,
+      {
+        context: actividad,
+        closeOnEsc: false,
+      });
   }
 
   getEstado(actividad: any, hora) {
