@@ -16,8 +16,10 @@ import { NbDialogService } from '@nebular/theme';
 export class SmartTableComponent implements OnInit {
 
   ngOnInit(): void {
-    this.getFechaActual();
 
+    this.form.get("AGE_FECHA").patchValue(this.getFechaActual())
+
+    this.obtenerActividad(this.getFechaActual())
     this.form.get("AGE_FECHA").valueChanges.subscribe(data => {
 
       this.obtenerActividad({ AGE_FECHA: data })
@@ -97,7 +99,7 @@ export class SmartTableComponent implements OnInit {
           persona['actividades'].forEach(actividad => {
 
             if (actividad != null) {
-              persona['ACT_ESTADO'] = actividad['ACT_ESTADO']
+              //  persona['ACT_ESTADO'] = actividad['ACT_ESTADO']
 
               actividad['horas'].forEach(hora => {
                 persona['HORA_' + hora] = actividad['ACT_NOMBRE']
@@ -133,7 +135,7 @@ export class SmartTableComponent implements OnInit {
     const year = today.getFullYear();
     const month = ('0' + (today.getMonth() + 1)).slice(-2);
     const day = ('0' + today.getDate()).slice(-2);
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`;
   }
 
   actividad_seleccionada;
@@ -165,19 +167,23 @@ export class SmartTableComponent implements OnInit {
   }
 
   getEstado(actividad: any, hora) {
+    const id = 'HORA_' + hora + '_ACT'
     if (actividad['HORA_' + hora] != undefined) {
+      const actividad_id = actividad[id]
 
-      if (actividad.ACT_ESTADO == "Finalizada")
-        return "Finalizada"
+      let estado = "blanco"
+      actividad.actividades.forEach(elemento => {
 
-      if (actividad.ACT_ESTADO == "Pendiente")
-        return "Pendiente"
+        if (elemento.ACT_ID == actividad_id) {
+          estado = elemento['ACT_ESTADO']
+          return
+        }
 
-      if (actividad.ACT_ESTADO == "Iniciada")
-        return "Iniciada"
+      })
+
+      return estado
 
     }
-    return "blanco";
   }
 
 }

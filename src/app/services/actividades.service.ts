@@ -44,7 +44,9 @@ export class ActividadesService {
     return this.http.post(`http://localhost:3000/actividad/auditor`, fecha)
   }
 
-
+  public getEstadistica() {
+    return this.http.get('http://localhost:3000/actividad/estadistica')
+  }
 
 
 

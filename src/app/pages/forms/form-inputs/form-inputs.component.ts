@@ -67,8 +67,8 @@ export class FormInputsComponent implements OnInit {
       .subscribe(params => {
         console.log(params);
         this.usuario_id = params.id;
-        this.agendaFecha = params.AGE_FECHA;
-
+        this.agendaFecha = params.fecha;
+        this.formActividad.get('AGE_FECHA').patchValue(this.agendaFecha)
       }
       );
   }

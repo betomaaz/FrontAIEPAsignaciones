@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { ActividadesService } from '../../../services/actividades.service';
 
 @Component({
   selector: 'ngx-chartjs-pie',
@@ -12,17 +13,35 @@ export class ChartjsPieComponent implements OnDestroy {
   options: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private service: ActividadesService) {
+
+
+    this.service.getEstadistica().subscribe(resultado => {
+      const pieEst = resultado['estadistica']['rows']
+      let array = []
+      pieEst.forEach(element => {
+        array.push(element['cuenta'])
+        console.log(element['cuenta'])
+      }
+
+      )
+      console.log(array)
+      this.displayEstaditica(array)
+    })
+
+
+  }
+
+  displayEstaditica(estadistica) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
       this.data = {
-        labels: ['Download Sales', 'In-Store Sales', 'Mail Sales'],
+        labels: ['Finalizada', 'Iniciada', 'Pendiente'],
         datasets: [{
-          data: [300, 500, 100],
-          backgroundColor: [colors.primaryLight, colors.infoLight, colors.successLight],
+          data: estadistica, backgroundColor: [colors.primaryLight, colors.infoLight, colors.successLight],
         }],
       };
 
@@ -47,9 +66,10 @@ export class ChartjsPieComponent implements OnDestroy {
           },
         },
       };
-    });
-  }
+    }
+    )
 
+  }
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
