@@ -14,20 +14,15 @@ export class NotFoundComponent {
 
   form: FormGroup;
 
-
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      AGE_FECHA: [''] // Asegúrate de agregar el control para AGE_FECHA
-    });
+
+    this.form.get("AGE_FECHA").patchValue(this.getFechaActual())
+
+    this.dataAuditor(this.getFechaActual())
 
     this.form.get("AGE_FECHA").valueChanges.subscribe(data => {
       this.dataAuditor({ AGE_FECHA: data });
     });
-
-    const prueba = this.form.get("AGE_FECHA");
-    console.log(prueba);
-
-    // Si necesitas realizar más acciones que dependan del formulario aquí, colócalas después de la inicialización
   }
 
 
@@ -36,7 +31,9 @@ export class NotFoundComponent {
     private dialogService: NbDialogService,
     private formBuilder: FormBuilder) {
 
-
+    this.form = this.formBuilder.group({
+      AGE_FECHA: [this.getFechaActual()]
+    });
   }
 
 
@@ -46,6 +43,14 @@ export class NotFoundComponent {
     this.menuService.navigateHome();
   }
 
+
+  getFechaActual(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+  }
 
   actividad: actividad[] = [];
 

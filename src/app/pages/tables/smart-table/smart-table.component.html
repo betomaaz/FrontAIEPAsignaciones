@@ -12,7 +12,6 @@
         </div>
       </form>
 
-
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -71,7 +70,7 @@
               20:00
             </th>
             <th>
-              Acciones
+              Asignar
             </th>
           </tr>
         </thead>
@@ -140,8 +139,6 @@
   </div>
 </div>
 
-
-
 <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>
     <nb-card-header>Detalle</nb-card-header>
@@ -150,7 +147,7 @@
       <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
       <p><b>Cliente: </b>{{data[0].CLI_NOMBRE}}</p>
       <p><b>Solicitante: </b> {{data[0].ACT_NOMBRE_SOLICITANTE}}</p>
-      <p><b>Solicitante:</b> {{data[0].ACT_DIRECCION}}</p>
+      <p><b>Dirección:</b> {{data[0].ACT_DIRECCION}}</p>
       <p><b>Monto Depósito:</b> {{data[0].DEP_MONTO}}</p>
 
     </nb-card-body>
@@ -166,5 +163,6 @@
         <button nbButton (click)="ref.close()">Finalizar</button>
       </div>
     </nb-card-footer>
+
   </nb-card>
 </ng-template>

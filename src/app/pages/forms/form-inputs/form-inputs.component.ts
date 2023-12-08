@@ -45,6 +45,8 @@ export class FormInputsComponent implements OnInit {
     private service: ActividadesService) {
     service.getComunas().subscribe((data: any) => {
       this.comunas = data['comuna']['rows']
+
+
     })
 
     service.getHoras().subscribe((data: any) => {

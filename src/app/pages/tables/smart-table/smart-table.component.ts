@@ -28,7 +28,6 @@ export class SmartTableComponent implements OnInit {
 
 
 
-
   form: FormGroup;
 
   settings = {
@@ -83,6 +82,7 @@ export class SmartTableComponent implements OnInit {
     });
 
   }
+
 
   actividad: actividad[] = [];
 
