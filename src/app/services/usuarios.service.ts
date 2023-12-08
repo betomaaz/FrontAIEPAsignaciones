@@ -32,7 +32,8 @@ export class UsuariosService {
             // this.readToken();
 
             // Guardar el nombre de usuario en el localStorage
-            localStorage.setItem('username', resp.rol_nombre);
+            localStorage.setItem('rol', resp.rol_nombre['ROL_NOMBRE']);
+            localStorage.setItem('username', resp.rol_nombre['USR_NOMBRES']);
             localStorage.setItem('token', resp.token);
 
             resolve(true);

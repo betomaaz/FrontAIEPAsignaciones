@@ -47,9 +47,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService) {
   }
+  username: string | null = null;
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+    this.username = localStorage.getItem('username');
 
 
     this.userService.getUsers()
