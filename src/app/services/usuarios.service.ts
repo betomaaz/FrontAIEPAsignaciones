@@ -30,6 +30,11 @@ export class UsuariosService {
           if (resp.ok) {
             // this.saveToken(resp.token);
             // this.readToken();
+
+            // Guardar el nombre de usuario en el localStorage
+            localStorage.setItem('username', resp.rol_nombre);
+            localStorage.setItem('token', resp.token);
+
             resolve(true);
           } else {
             // this.removeToken();
@@ -43,7 +48,7 @@ export class UsuariosService {
 
   getUsuarios() {
     return this.http.get<userResponse>('http://localhost:3000/usuario');
-  }
+  }
 }
 
 

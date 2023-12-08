@@ -1,17 +1,19 @@
 
-export interface userToken{
-    ok:boolean,
-    token:string
+export interface userToken {
+    ok: boolean,
+    token: string,
+    rol_nombre: string,
 }
 
-export interface User{
-    USR_CORREO?:string,
-    USR_CONTRASENA?:string
+export interface User {
+    USR_CORREO?: string,
+    USR_CONTRASENA?: string
 }
 
 export interface userResponse {
     ok: boolean,
-    usuario: usuario[]
+    usuario: usuario[],
+    rol: string
 }
 
 export interface usuario {
@@ -20,7 +22,7 @@ export interface usuario {
     USR_AP_PATERNO: string,
     USR_CORREO: string,
     USR_RUT: string,
-    ROL_NOMBRE: string
+    ROL_NOMBRE: string
 }
 
 export interface actividad {

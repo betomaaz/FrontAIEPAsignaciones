@@ -48,7 +48,13 @@ export class ActividadesService {
     return this.http.get('http://localhost:3000/actividad/estadistica')
   }
 
+  getdeposito() {
+    return this.http.get(`http://localhost:3000/actividad/deposito`)
+  }
 
+  regdeposito(act_id) {
+    return this.http.post(`http://localhost:3000/actividad/resdeposito`, act_id)
+  }
 
 
 }

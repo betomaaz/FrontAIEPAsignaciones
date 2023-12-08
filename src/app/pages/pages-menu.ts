@@ -60,10 +60,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Toastr',
         link: '/pages/modal-overlays/toastr',
       },
-      {
-        title: 'Tooltip',
-        link: '/pages/modal-overlays/tooltip',
-      },
     ],
   },
   {
@@ -131,7 +127,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   // },
 
   {
-    title: 'Actividades',
+    title: 'Depósitos',
+    icon: 'edit-2-outline',
+    link: '/pages/modal-overlays/tooltip',
+  },
+
+  {
+    title: 'Agendamiento',
     icon: 'grid-outline',
     link: '/pages/tables/smart-table',
   },

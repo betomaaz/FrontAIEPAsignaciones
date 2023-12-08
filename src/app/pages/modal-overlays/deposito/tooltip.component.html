@@ -1,0 +1,102 @@
+<div style="min-width:81vw ;">
+  <div class="card p-5">
+    <div class="card-header mt">
+      <h3 class="text-center">Gestión de Depósitos</h3>
+    </div>
+
+
+    <div class="card-body">
+
+      <!--  <form [formGroup]="formulario">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 50px;">
+          <input type="date" nbInput class="nb-input small-date-input" fieldSize="medium" placeholder="Fecha de agenda"
+            formControlName="AGE_FECHA">
+        </div>
+      </form> -->
+
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>
+              Nombre
+            </th>
+            <th>
+              Apellido
+            </th>
+            <th>
+              Actividad
+            </th>
+            <th>
+              Monto Depósito
+            </th>
+            <th>
+              Fecha
+            </th>
+            <th>
+              Registro
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acti of actividad">
+
+
+            <td>{{ acti.USR_NOMBRES }}</td>
+            <td>{{ acti.USR_AP_PATERNO }}</td>
+            <td>{{ acti.ACT_NOMBRE}}</td>
+            <td>{{ acti.DEP_MONTO}}</td>
+            <td>{{ acti.DEP_FECHA }}</td>
+            <td>
+              <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
+                <i class="fa fa-archive" style="margin-right: 30px; margin-left: 5px;"></i>
+              </a>
+            </td>
+
+          </tr>
+
+
+        </tbody>
+
+      </table>
+
+    </div>
+      
+  </div>
+</div>
+
+
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Detalle del Depósito</nb-card-header>
+    <nb-card-body>
+
+      <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
+      <p><b>Cliente: </b>{{data[0].CLI_NOMBRE}}</p>
+
+      <div class="d-flex justify-content-between align-items-center mb-6">
+        <p class="mb-0"><b>Monto Depósito:</b> {{data[0].DEP_MONTO}}</p>
+        <!-- Botón para adjuntar archivo -->
+        <div class="d-flex align-items-center">
+          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+          <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Comprobante</button>
+        </div>
+      </div>
+
+      <p><b>Motivo:</b> {{data[0].MOT_NOMBRE}}</p>
+
+
+    </nb-card-body>
+
+    <nb-card-footer class="d-flex justify-content-between">
+      <div>
+        <button nbButton (click)="ref.close()">Cerrar</button>
+      </div>
+
+      <div>
+        <button nbButton class="custom-button" (click)="registrardeposito(data[0].ACT_ID)">Registrar depósito</button>
+      </div>
+    </nb-card-footer>
+
+  </nb-card>
+</ng-template>

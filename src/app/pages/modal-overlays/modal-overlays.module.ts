@@ -30,7 +30,7 @@ import {
   NgxPopoverCardComponent, NgxPopoverFormComponent,
   NgxPopoverTabsComponent,
 } from './popovers/popover-examples.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
+import { TooltipComponent } from './deposito/tooltip.component';
 
 
 const COMPONENTS = [
@@ -77,15 +77,15 @@ const SERVICES = [
 ];
 
 @NgModule({
-    imports: [
-        ...MODULES,
-    ],
-    declarations: [
-        ...COMPONENTS,
-    ],
-    providers: [
-        ...SERVICES,
-    ],
+  imports: [
+    ...MODULES,
+  ],
+  declarations: [
+    ...COMPONENTS,
+  ],
+  providers: [
+    ...SERVICES,
+  ],
 })
 export class ModalOverlaysModule {
 }

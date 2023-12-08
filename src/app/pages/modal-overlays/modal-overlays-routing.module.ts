@@ -5,7 +5,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { WindowComponent } from './window/window.component';
 import { PopoversComponent } from './popovers/popovers.component';
 import { ToastrComponent } from './toastr/toastr.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
+import { TooltipComponent } from './deposito/tooltip.component';
 
 const routes: Routes = [{
   path: '',
