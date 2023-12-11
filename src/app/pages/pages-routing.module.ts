@@ -22,7 +22,7 @@ const routes: Routes = [{
     },
 
     {
-      path: 'modal-overlays',
+      path: 'misactividades',
       loadChildren: () => import('./modal-overlays/modal-overlays.module')
         .then(m => m.ModalOverlaysModule),
     },
@@ -43,7 +43,7 @@ const routes: Routes = [{
         .then(m => m.TablesModule),
     },
     {
-      path: 'miscellaneous',
+      path: 'auditoria',
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
         .then(m => m.MiscellaneousModule),
     },

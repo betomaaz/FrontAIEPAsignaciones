@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import {
   NbComponentStatus,
   NbGlobalLogicalPosition,
@@ -75,4 +75,53 @@ export class ToastrComponent {
 
     })
   }
+
+  actividad_seleccionada;
+
+  editarActividad(actividad, dialog: TemplateRef<any>, hora) {
+
+
+    console.log("id act: ", actividad)
+    this.actividad_seleccionada = actividad
+    console.log("id ac selec", this.actividad_seleccionada)
+
+    // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
+    // Pasar el id actividad_seleccionada
+
+    this.service.getModal({ ACT_ID: this.actividad_seleccionada }).subscribe(
+      (data) => {
+
+        const prueba = data;
+        console.log('NOMBRE:', prueba['data_act']['rows']);
+
+        this.dialogService.open(
+          dialog,
+          {
+            context: prueba['data_act']['rows'],
+            closeOnEsc: false,
+            hasBackdrop: true,
+
+          });
+      }
+    );
+
+  }
+
+
+  iniciar({ ACT_ID: ID_ACT }) {
+
+    console.log("ID INICIAR:", ID_ACT)
+    this.service.iniciarAct(ID_ACT)
+
+  }
+
+  Finalizar(ID_ACT) {
+
+
+
+    console.log("ID FINALIZAR:", ID_ACT)
+    this.service.finalizarAct(ID_ACT)
+  }
+
+
 }

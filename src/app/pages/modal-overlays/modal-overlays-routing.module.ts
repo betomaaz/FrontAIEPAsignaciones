@@ -24,11 +24,11 @@ const routes: Routes = [{
       component: PopoversComponent,
     },
     {
-      path: 'tooltip',
+      path: 'deposito',
       component: TooltipComponent,
     },
     {
-      path: 'toastr',
+      path: '',
       component: ToastrComponent,
     },
   ],

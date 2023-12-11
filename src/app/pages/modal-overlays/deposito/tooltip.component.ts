@@ -64,9 +64,10 @@ export class TooltipComponent {
   editarActividad(actividad, dialog: TemplateRef<any>, hora) {
 
 
-    console.log("id act: ", actividad)
+
+
     this.actividad_seleccionada = actividad
-    console.log("id ac selec", this.actividad_seleccionada)
+
 
     // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
     // Pasar el id actividad_seleccionada
@@ -94,11 +95,17 @@ export class TooltipComponent {
 
   registrardeposito(actividad) {
 
-
-
     this.actividad_deposito = actividad
-    console.log("esto es id para reg dep ", actividad)
-    this.service.regdeposito(this.actividad_deposito)
+
+    this.service.regdeposito(this.actividad_deposito).subscribe(data => {
+
+      this.datadeposito()
+
+    })
+
+
+
+
 
   }
 

@@ -64,7 +64,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Depósitos',
     icon: 'file-text-outline',
-    link: '/pages/modal-overlays/tooltip',
+    link: '/pages/misactividades/deposito',
   },
 
   {
@@ -82,14 +82,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Auditoria',
     icon: 'checkmark-square-outline',
-    link: '/pages/miscellaneous/404',
+    link: '/pages/auditoria',
   },
 
 
   {
     title: 'Mis Actividades',
     icon: 'briefcase-outline',
-    link: '/pages/modal-overlays/toastr',
+    link: '/pages/misactividades',
   },
 
 ];

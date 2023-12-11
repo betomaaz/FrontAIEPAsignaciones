@@ -53,11 +53,20 @@ export class ActividadesService {
   }
 
   regdeposito(act_id) {
-    return this.http.post(`http://localhost:3000/actividad/resdeposito`, act_id)
+
+    return this.http.post(`http://localhost:3000/actividad/resdeposito`, { ACT_ID: act_id })
   }
 
   misAsignaciones(usr_id) {
     return this.http.post(`http://localhost:3000/actividad/misactividades`, usr_id)
+  }
+
+  iniciarAct(act_id) {
+    return this.http.post(`http://localhost:3000/actividad/iniciar`, act_id)
+  }
+
+  finalizarAct(act_id) {
+    return this.http.post(`http://localhost:3000/actividad/finalizar`, act_id)
   }
 
 

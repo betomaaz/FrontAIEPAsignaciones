@@ -4,6 +4,14 @@
       <h3 class="text-center text-white">Gestión De Depósitos</h3>
     </div>
 
+    <div class="input-group mt-3 mx-3">
+      <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+        aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Buscar</button>
+      </div>
+    </div>
+
     <div class="card-body">
 
       <!--  <form [formGroup]="formulario">
@@ -31,6 +39,9 @@
               Fecha Depósito
             </th>
             <th>
+              Motivos
+            </th>
+            <th>
               Registro
             </th>
           </tr>
@@ -43,7 +54,11 @@
 
             <td>{{ acti.ACT_NOMBRE}}</td>
             <td>{{ acti.DEP_MONTO}}</td>
-            <td>{{ acti.DEP_FECHA }}</td>
+            <td>{{ acti.DEP_FECHA|date:'short' }}</td>
+            <td>
+              <span *ngFor="let item of acti.json_agg">{{item}}, </span>
+
+            </td>
             <td>
               <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
                 <i class="bi bi-upload" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
@@ -79,8 +94,6 @@
           <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Comprobante</button>
         </div>
       </div>
-
-      <p><b>Motivo:</b> {{data[0].MOT_NOMBRE}}</p>
 
 
     </nb-card-body>
