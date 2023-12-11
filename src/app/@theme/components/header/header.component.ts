@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{ title: 'Salir', icon: 'pie-chart', link: '/auth/login' },];
+  userMenu = [{ title: 'Cerrar Sesión', icon: 'log-out-outline', link: '/auth/login' },];
 
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -48,10 +48,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private breakpointService: NbMediaBreakpointsService) {
   }
   username: string | null = null;
+  rol: string | null = null;
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
     this.username = localStorage.getItem('username');
+    this.rol = localStorage.getItem('rol');
+    console.log(this.username); // Verifica que el nombre de usuario se esté recuperando correctamente
+    console.log(this.rol); // 
 
 
     this.userService.getUsers()

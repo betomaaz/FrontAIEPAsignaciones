@@ -6,7 +6,12 @@ import {
   NbGlobalPosition,
   NbToastrService,
   NbToastrConfig,
+  NbMenuService,
+  NbDialogService,
 } from '@nebular/theme';
+import { ActividadesService } from '../../../services/actividades.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { actividad } from '../../../interfaces';
 
 @Component({
   selector: 'ngx-toastr',
@@ -14,73 +19,60 @@ import {
   templateUrl: './toastr.component.html',
 })
 export class ToastrComponent {
-  constructor(private toastrService: NbToastrService) {}
 
-  config: NbToastrConfig;
 
-  index = 1;
-  destroyByClick = true;
-  duration = 2000;
-  hasIcon = true;
-  position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
-  preventDuplicates = false;
-  status: NbComponentStatus = 'primary';
+  form: FormGroup;
 
-  title = 'HI there!';
-  content = `I'm cool toaster!`;
+  USR_ID: number | null = null;
 
-  types: NbComponentStatus[] = [
-    'primary',
-    'success',
-    'info',
-    'warning',
-    'danger',
-  ];
-  positions: string[] = [
-    NbGlobalPhysicalPosition.TOP_RIGHT,
-    NbGlobalPhysicalPosition.TOP_LEFT,
-    NbGlobalPhysicalPosition.BOTTOM_LEFT,
-    NbGlobalPhysicalPosition.BOTTOM_RIGHT,
-    NbGlobalLogicalPosition.TOP_END,
-    NbGlobalLogicalPosition.TOP_START,
-    NbGlobalLogicalPosition.BOTTOM_END,
-    NbGlobalLogicalPosition.BOTTOM_START,
-  ];
+  ngOnInit(): void {
 
-  quotes = [
-    { title: null, body: 'We rock at Angular' },
-    { title: null, body: 'Titles are not always needed' },
-    { title: null, body: 'Toastr rock!' },
-  ];
 
-  makeToast() {
-    this.showToast(this.status, this.title, this.content);
+    this.USR_ID = +(localStorage.getItem('usr_id'));
+
+    this.misAsignaciones({ USR_ID: this.USR_ID });
+
+
+
+    console.log(this.USR_ID)
+
   }
 
-  openRandomToast () {
-    const typeIndex = Math.floor(Math.random() * this.types.length);
-    const quoteIndex = Math.floor(Math.random() * this.quotes.length);
-    const type = this.types[typeIndex];
-    const quote = this.quotes[quoteIndex];
 
-    this.showToast(type, quote.title, quote.body);
+  constructor(private menuService: NbMenuService,
+    private service: ActividadesService,
+    private dialogService: NbDialogService,
+    private formBuilder: FormBuilder) {
+
+    this.form = this.formBuilder.group({
+      AGE_FECHA: [this.getFechaActual()]
+    });
   }
 
-  private showToast(type: NbComponentStatus, title: string, body: string) {
-    const config = {
-      status: type,
-      destroyByClick: this.destroyByClick,
-      duration: this.duration,
-      hasIcon: this.hasIcon,
-      position: this.position,
-      preventDuplicates: this.preventDuplicates,
-    };
-    const titleContent = title ? `. ${title}` : '';
 
-    this.index += 1;
-    this.toastrService.show(
-      body,
-      `Toast ${this.index}${titleContent}`,
-      config);
+
+
+  goToHome() {
+    this.menuService.navigateHome();
+  }
+
+
+  getFechaActual(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    const day = ('0' + today.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+  }
+
+  actividad: actividad[] = [];
+
+  misAsignaciones(USR_ID) {
+
+    this.service.misAsignaciones(USR_ID).subscribe(resp => {
+      this.actividad = resp['asignacion']['rows'];
+      console.log(this.actividad)
+
+    })
   }
 }

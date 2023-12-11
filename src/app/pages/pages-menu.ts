@@ -1,67 +1,13 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+
   {
-    title: 'Resumen',
-    icon: 'pie-chart-outline',
-    link: '/pages/dashboard',
-    home: true,
-  },
-  {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
-  },
-  {
-    title: 'FEATURES',
+    title: 'MENÚ',
     group: true,
   },
 
-  {
-    title: 'Forms',
-    icon: 'edit-2-outline',
-    children: [
-      /* {
-         title: 'Asignaciones',
-         link: '/pages/forms/inputs',
-       },*/
-      {
-        title: 'Form Layouts',
-        link: '/pages/forms/layouts',
-      },
-      {
-        title: 'Buttons',
-        link: '/pages/forms/buttons',
-      },
-      {
-        title: 'Datepicker',
-        link: '/pages/forms/datepicker',
-      },
-    ],
-  },
 
-  {
-    title: 'Modal & Overlays',
-    icon: 'browser-outline',
-    children: [
-      {
-        title: 'Dialog',
-        link: '/pages/modal-overlays/dialog',
-      },
-      {
-        title: 'Window',
-        link: '/pages/modal-overlays/window',
-      },
-      {
-        title: 'Popover',
-        link: '/pages/modal-overlays/popover',
-      },
-      {
-        title: 'Toastr',
-        link: '/pages/modal-overlays/toastr',
-      },
-    ],
-  },
   {
     title: 'Extra Components',
     icon: 'message-circle-outline',
@@ -92,25 +38,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
-
   {
     title: 'Reportes',
+    // icon: 'activity-outline',
     icon: 'pie-chart-outline',
-    children: [
-      {
-        title: 'Echarts',
-        link: '/pages/charts/echarts',
-      },
-      {
-        title: 'Charts.js',
-        link: '/pages/charts/chartjs',
-      },
-      {
-        title: 'D3',
-        link: '/pages/charts/d3',
-      },
-    ],
+    link: '/pages/charts/chartjs',
   },
+
+
   // {
   //   title: 'Editors',
   //   icon: 'text-outline',
@@ -128,27 +63,33 @@ export const MENU_ITEMS: NbMenuItem[] = [
 
   {
     title: 'Depósitos',
-    icon: 'edit-2-outline',
+    icon: 'file-text-outline',
     link: '/pages/modal-overlays/tooltip',
   },
 
   {
     title: 'Agendamiento',
-    icon: 'grid-outline',
+    icon: 'calendar-outline',
     link: '/pages/tables/smart-table',
   },
   {
     title: 'Usuarios',
-    icon: 'grid-outline',
+    icon: 'people-outline',
     link: '/pages/tables/tree-grid',
   },
 
 
   {
     title: 'Auditoria',
-    icon: 'grid-outline',
+    icon: 'checkmark-square-outline',
     link: '/pages/miscellaneous/404',
   },
 
+
+  {
+    title: 'Mis Actividades',
+    icon: 'briefcase-outline',
+    link: '/pages/modal-overlays/toastr',
+  },
 
 ];

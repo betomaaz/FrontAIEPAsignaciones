@@ -1,7 +1,13 @@
 <div style="min-width:81vw ;">
   <div class="card p-5">
-    <div class="card-header mt">
+
+
+    <!-- <div class="card-header mt">
       <h3 class="text-center">Registro De Actividades</h3>
+    </div> -->
+
+    <div class="card-header mt-2" style="background: linear-gradient(to right, #007bff, #00bfff);">
+      <h3 class="text-center text-white">Registro De Actividades</h3>
     </div>
 
     <div class="card-body">
@@ -22,10 +28,7 @@
               Comuna
             </th>
             <th>
-              Nombre
-            </th>
-            <th>
-              Apellido
+              Nombre de Técnico
             </th>
             <th>
               7:00
@@ -79,7 +82,7 @@
             <td>{{ acti.REG_NOMBRE }}</td>
             <td>{{ acti.COM_NOMBRE }}</td>
             <td>{{ acti.USR_NOMBRES }}</td>
-            <td>{{ acti.USR_AP_PATERNO }}</td>
+
 
             <td [ngClass]="getEstado(acti,7)">
               <div (click)="editarActividad(acti, dialog, 7)" style="cursor: pointer;">{{acti.HORA_7}}</div>
@@ -125,7 +128,7 @@
             </td>
             <td>
               <a routerLink="/pages/forms/inputs" [queryParams]="{id:acti.USR_ID , fecha:form.get('AGE_FECHA').value}">
-                <i class="bi bi-pencil" style="margin-right: 30px; margin-left: 5px;"></i>
+                <i class="bi bi-plus-circle" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
               </a>
             </td>
 

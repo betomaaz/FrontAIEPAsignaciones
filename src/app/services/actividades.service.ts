@@ -56,5 +56,9 @@ export class ActividadesService {
     return this.http.post(`http://localhost:3000/actividad/resdeposito`, act_id)
   }
 
+  misAsignaciones(usr_id) {
+    return this.http.post(`http://localhost:3000/actividad/misactividades`, usr_id)
+  }
+
 
 }

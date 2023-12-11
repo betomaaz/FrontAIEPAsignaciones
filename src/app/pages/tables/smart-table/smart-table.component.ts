@@ -90,7 +90,7 @@ export class SmartTableComponent implements OnInit {
 
     this.service.getActividad(AGE_FECHA).subscribe(resp => {
       this.actividad = resp['actividad']['rows'];
-
+      console.log(this.actividad)
       this.actividad.forEach(persona => {
 
         if (persona['actividades']) {

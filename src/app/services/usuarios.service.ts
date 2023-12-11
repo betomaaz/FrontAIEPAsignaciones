@@ -34,6 +34,7 @@ export class UsuariosService {
             // Guardar el nombre de usuario en el localStorage
             localStorage.setItem('rol', resp.rol_nombre['ROL_NOMBRE']);
             localStorage.setItem('username', resp.rol_nombre['USR_NOMBRES']);
+            localStorage.setItem('usr_id', resp.rol_nombre['USR_ID']);
             localStorage.setItem('token', resp.token);
 
             resolve(true);

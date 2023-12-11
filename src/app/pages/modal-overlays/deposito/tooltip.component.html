@@ -1,9 +1,8 @@
 <div style="min-width:81vw ;">
   <div class="card p-5">
-    <div class="card-header mt">
-      <h3 class="text-center">Gestión de Depósitos</h3>
+    <div class="card-header mt-2" style="background: linear-gradient(to right, #007bff, #00bfff);">
+      <h3 class="text-center text-white">Gestión De Depósitos</h3>
     </div>
-
 
     <div class="card-body">
 
@@ -19,11 +18,9 @@
         <thead class="thead-light">
           <tr>
             <th>
-              Nombre
+              Nombre de Técnico
             </th>
-            <th>
-              Apellido
-            </th>
+
             <th>
               Actividad
             </th>
@@ -31,7 +28,7 @@
               Monto Depósito
             </th>
             <th>
-              Fecha
+              Fecha Depósito
             </th>
             <th>
               Registro
@@ -43,13 +40,13 @@
 
 
             <td>{{ acti.USR_NOMBRES }}</td>
-            <td>{{ acti.USR_AP_PATERNO }}</td>
+
             <td>{{ acti.ACT_NOMBRE}}</td>
             <td>{{ acti.DEP_MONTO}}</td>
             <td>{{ acti.DEP_FECHA }}</td>
             <td>
               <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
-                <i class="bi bi-upload" style="margin-right: 30px; margin-left: 5px;"></i>
+                <i class="bi bi-upload" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
               </a>
             </td>
 

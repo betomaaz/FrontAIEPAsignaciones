@@ -2,22 +2,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/auditoria/auditoria.component';
+import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'dashboard',
-      component: ECommerceComponent,
-    },
-    {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
-    },
+
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
@@ -28,11 +20,7 @@ const routes: Routes = [{
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
     },
-    {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
-    },
+
     {
       path: 'modal-overlays',
       loadChildren: () => import('./modal-overlays/modal-overlays.module')
@@ -48,11 +36,7 @@ const routes: Routes = [{
       loadChildren: () => import('./charts/charts.module')
         .then(m => m.ChartsModule),
     },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
+
     {
       path: 'tables',
       loadChildren: () => import('./tables/tables.module')
@@ -65,12 +49,12 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'charts/chartjs',
       pathMatch: 'full',
     },
     {
       path: '**',
-      component: NotFoundComponent,
+      redirectTo: 'charts/chartjs'
     },
   ],
 }];
