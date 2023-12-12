@@ -9,9 +9,6 @@
       <div class="input-group" style="width: 20%;">
         <input type="text" class="form-control" placeholder="Buscar Actividad..." aria-label="Buscar"
           aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <!-- <button class="btn btn-outline-secondary" type="button">Buscar</button> -->
-        </div>
       </div>
 
     </div>
@@ -58,7 +55,7 @@
             <td>{{ acti.ACT_ESTADO }}</td>
             <td>
               <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
-                <i class="bi bi-gear-wide" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
+                <i class="bi bi-gear-wide text-primary" style="padding-left: 40%; font-size: medium"></i>
               </a>
             </td>
           </tr>
