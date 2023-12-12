@@ -12,6 +12,7 @@ import {
 import { ActividadesService } from '../../../services/actividades.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { actividad } from '../../../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-toastr',
@@ -43,7 +44,8 @@ export class ToastrComponent {
     private service: ActividadesService,
     private dialogService: NbDialogService,
     private formBuilder: FormBuilder,
-    private toastrService: NbToastrService) {
+    private toastrService: NbToastrService,
+    private router: Router) {
 
     this.form = this.formBuilder.group({
       AGE_FECHA: [this.getFechaActual()]
@@ -116,9 +118,14 @@ export class ToastrComponent {
 
     console.log("ID iniciar:", ID_ACT)
     this.showToast(this.status, 'Actividad Iniciada', '')
+    this.router.navigate(['/pages/misactividades'])
     this.service.iniciarAct({ ACT_ID: ID_ACT }).subscribe(data => {
 
+
+
       this.misAsignaciones(this.USR_ID)
+
+
 
 
     })
@@ -129,9 +136,11 @@ export class ToastrComponent {
   finalizar(ID_ACT) {
 
 
-    this.showToast(this.fin, 'Actividad Finalizada', '')
+
     this.service.finalizarAct({ ACT_ID: ID_ACT }).subscribe(data => {
 
+      this.router.navigate(['/pages/misactividades'])
+      this.showToast(this.fin, 'Actividad Finalizada', '')
       this.misAsignaciones(this.USR_ID)
 
 

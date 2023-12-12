@@ -19,22 +19,17 @@ export class ChartjsLineComponent implements OnDestroy {
       const chartjs: any = config.variables.chartjs;
 
       this.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['May-23', 'Jun-23', 'Jul-23', 'Ago-23', 'Sept-23', 'Oct-23', 'Nov-23'],
         datasets: [{
-          data: [65, 59, 80, 81, 56, 55, 40],
-          label: 'Series A',
+          data: [90, 85, 88, 95, 79, 83, 76],
+          label: 'Actividades',
           backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
           borderColor: colors.primary,
         }, {
-          data: [28, 48, 40, 19, 86, 27, 90],
-          label: 'Series B',
+          data: [60, 70, 77, 70, 70, 80, 70],
+          label: 'Técnicos',
           backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
           borderColor: colors.danger,
-        }, {
-          data: [18, 48, 77, 9, 100, 27, 40],
-          label: 'Series C',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.info, 0.3),
-          borderColor: colors.info,
         },
         ],
       };

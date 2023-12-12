@@ -28,7 +28,7 @@ const routes: Routes = [{
     },
 
     {
-      path: 'charts',
+      path: 'reportes',
       loadChildren: () => import('./charts/charts.module')
         .then(m => m.ChartsModule),
     },
@@ -45,12 +45,12 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'charts/chartjs',
+      redirectTo: 'reportes',
       pathMatch: 'full',
     },
     {
       path: '**',
-      redirectTo: 'charts/chartjs'
+      redirectTo: 'reportes'
     },
   ],
 }];

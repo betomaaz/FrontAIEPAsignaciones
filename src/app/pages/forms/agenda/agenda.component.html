@@ -1,94 +1,3 @@
-<!-- 
-<div class="row">
-  <div class="col-lg-6">
-    <nb-card>
-      <nb-card-header>Default Inputs</nb-card-header>
-      <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Project">
-        <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Nick">
-          <input type="text" nbInput fullWidth placeholder="Last Name">
-        </div>
-        <input type="password" nbInput fullWidth placeholder="Password">
-        <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
-        <input type="text" nbInput fullWidth shape="semi-round" placeholder="Semi-round border">
-        <input type="text" nbInput fullWidth shape="round" placeholder="Rounded border">
-        <input type="text" nbInput fullWidth placeholder="Disabled input" disabled/>
-        <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
-        <input type="text" nbInput fullWidth fieldSize="small"  placeholder="Small Input">
-        <input type="text" nbInput fullWidth fieldSize="medium"  placeholder="Medium Input">
-        <input type="text" nbInput fullWidth fieldSize="large"  placeholder="Large Input">
-      </nb-card-body>
-    </nb-card>
-  </div>
-
-  <div class="col-lg-6">
-
-    <nb-card>
-      <nb-card-header>Select</nb-card-header>
-      <nb-card-body>
-        <nb-select selected="1">
-          <nb-option value="1">Option 1</nb-option>
-          <nb-option value="2">Option 2</nb-option>
-        </nb-select>
-      </nb-card-body>
-    </nb-card>
-
-    <nb-card>
-      <nb-card-header>Validation States</nb-card-header>
-      <nb-card-body>
-        <input type="text" nbInput fullWidth status="info"  placeholder="Input with Info">
-        <input type="text" nbInput fullWidth status="success"  placeholder="Warning Input">
-        <input type="text" nbInput fullWidth status="warning"  placeholder="Danger Input">
-        <input type="text" nbInput fullWidth status="danger" placeholder="Danger Input">
-        <input type="text" nbInput fullWidth status="primary"  placeholder="Input with Primary">
-        <div class="validation-checkboxes">
-          <nb-checkbox status="success">Success Checkbox</nb-checkbox>
-          <nb-checkbox status="warning">Warning Checkbox</nb-checkbox>
-          <nb-checkbox status="danger">Danger Checkbox</nb-checkbox>
-        </div>
-      </nb-card-body>
-    </nb-card>
-
-    <nb-card>
-      <nb-card-header>Checkboxes & Radios</nb-card-header>
-      <nb-card-body class="checkbox-radio">
-        <div class="demo-items">
-          <nb-checkbox>Checkbox 1</nb-checkbox>
-          <nb-checkbox checked>Checkbox 2</nb-checkbox>
-        </div>
-        <div class="demo-items">
-          <nb-radio-group [(value)]="radioGroupValue">
-            <nb-radio
-              [value]="'This is value 1'">
-              Radio 1
-            </nb-radio>
-            <nb-radio
-              [value]="'This is value 2'">
-              Radio 2
-            </nb-radio>
-            <nb-radio
-              [value]="'This is value 3'">
-              Radio 3
-            </nb-radio>
-          </nb-radio-group>
-        </div>
-        <div class="demo-items">
-          <nb-checkbox disabled>Disabled Checkbox</nb-checkbox>
-          <nb-radio-group disabled>
-            <nb-radio
-              [value]="'Disabled Value'">
-              Disabled Radio
-            </nb-radio>
-          </nb-radio-group>
-        </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div> -->
-
-
-
 <div class="row">
   <div class="col-lg-12">
     <nb-card>
@@ -105,12 +14,7 @@
               <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Nombre actividad"
                 formControlName="ACT_NOMBRE">
 
-              <!-- 
-                <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Seleccionar proyecto" 
-                formControlName="ACT_PRO_ID"> -->
+
 
               <nb-select formControlName="ACT_PRO_ID" class="nb-input" placeholder="Seleccionar proyecto" fullWidth>
                 <nb-option *ngFor="let item of proyectos" [value]="item.PRO_ID">{{item.PRO_NOMBRE}}</nb-option>
@@ -120,21 +24,11 @@
               <nb-select formControlName="ACT_COM_ID" class="nb-input" placeholder="Seleccionar Comuna" fullWidth>
                 <nb-option *ngFor="let item of comunas" [value]="item.COM_ID">{{item.COM_NOMBRE}}</nb-option>
               </nb-select>
-              <!-- 
-              <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Seleccionar Comuna" 
-                formControlName="ACT_COM_ID"> -->
+
 
               <input type="date" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Fecha de agenda"
                 formControlName="AGE_FECHA">
 
-              <!-- <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Seleccionar horas disponibles" 
-                formControlName="AH_HOR_ID"> -->
 
 
 
@@ -143,11 +37,6 @@
               <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium" placeholder="Descripción"
                 formControlName="ACT_DESCRIPCION" style="height: 99px;">
 
-              <!-- <input type="text" nbInput fullWidth
-              class="nb-input"
-              fieldSize="medium"
-              placeholder="Seleccionar estado"
-              formControlName="ACT_ESTADO"> -->
 
               <input type="text" nbInput fullWidth class="nb-input" fieldSize="medium"
                 placeholder="Dirección (calle, número, piso)" formControlName="ACT_DIRECCION">
@@ -157,17 +46,6 @@
                 <nb-option *ngFor="let item of horas" [value]="item.HOR_ID">{{item.HOR_VALOR}}</nb-option>
               </nb-select>
 
-              <!-- <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Id de usuario asignado" 
-                formControlName="AGE_USR_ID"> -->
-
-              <!-- <input type="text" nbInput fullWidth 
-                class="nb-input"
-                fieldSize="medium" 
-                placeholder="Agenda" 
-                formControlName="ACT_AGE_ID"> -->
 
             </div>
           </div>

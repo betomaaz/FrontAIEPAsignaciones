@@ -3,6 +3,7 @@ import { NbComponentStatus, NbDialogService, NbGlobalPhysicalPosition, NbMenuSer
 import { ActividadesService } from '../../../services/actividades.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { actividad } from '../../../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-tooltip',
@@ -26,7 +27,8 @@ export class TooltipComponent {
     private service: ActividadesService,
     private dialogService: NbDialogService,
     private formBuilder: FormBuilder,
-    private toastrService: NbToastrService) {
+    private toastrService: NbToastrService,
+    private router: Router) {
 
     this.formulario = this.formBuilder.group({
       AGE_FECHA: [this.getFechaActual()]
@@ -100,10 +102,11 @@ export class TooltipComponent {
 
     this.actividad_deposito = actividad
 
-    this.datadeposito()
-    this.showToast(this.status, 'Depósito Registrado', '')
-    this.service.regdeposito(this.actividad_deposito).subscribe(data => {
 
+    this.service.regdeposito(this.actividad_deposito).subscribe(data => {
+      this.router.navigate(['/pages/misactividades/deposito'])
+      this.datadeposito()
+      this.showToast(this.status, 'Depósito Registrado', '')
 
     })
 

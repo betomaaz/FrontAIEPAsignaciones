@@ -16,7 +16,7 @@ const routes: Routes = [{
     path: 'd3',
     component: D3Component,
   }, {
-    path: 'chartjs',
+    path: '',
     component: ChartjsComponent,
   }],
 }];

@@ -11,7 +11,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Reportes',
     // icon: 'activity-outline',
     icon: 'pie-chart-outline',
-    link: '/pages/charts/chartjs',
+    link: '/pages/reportes',
   },
 
 

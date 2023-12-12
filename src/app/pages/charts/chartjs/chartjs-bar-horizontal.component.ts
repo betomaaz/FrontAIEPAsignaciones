@@ -19,17 +19,17 @@ export class ChartjsBarHorizontalComponent implements OnDestroy {
       const chartjs: any = config.variables.chartjs;
 
       this.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        labels: ['Jun-23', 'Jul-23', 'Ago-23', 'Sept-23', 'Oct-23', 'Nov-23'],
         datasets: [{
-            label: 'Dataset 1',
-            backgroundColor: colors.infoLight,
-            borderWidth: 1,
-            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          }, {
-            label: 'Dataset 2',
-            backgroundColor: colors.successLight,
-            data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          },
+          label: 'Confirmaciones',
+          backgroundColor: colors.successLight,
+          borderWidth: 1,
+          data: [140, 148, 150, 145, 120, 115],
+        }, {
+          label: 'Rechazos',
+          backgroundColor: colors.dangerLight,
+          data: [10, 7, 15, 5, 7, 6],
+        },
         ],
       };
 
