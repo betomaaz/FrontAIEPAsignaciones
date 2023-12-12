@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MiscellaneousComponent } from './miscellaneous.component';
+import { MiscellaneousComponent } from './auditor.component';
 import { NotFoundComponent } from './auditoria/auditoria.component';
 import { ReactiveFormsModule } from '@angular/forms';
 

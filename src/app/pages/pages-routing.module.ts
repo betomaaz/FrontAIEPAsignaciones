@@ -40,7 +40,7 @@ const routes: Routes = [{
     },
     {
       path: 'auditoria',
-      loadChildren: () => import('./miscellaneous/miscellaneous.module')
+      loadChildren: () => import('./miscellaneous/auditor.module')
         .then(m => m.MiscellaneousModule),
     },
     {
