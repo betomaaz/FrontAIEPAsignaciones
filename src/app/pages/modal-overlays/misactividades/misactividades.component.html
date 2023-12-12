@@ -52,7 +52,10 @@
             <td>{{ acti.ACT_NOMBRE}}</td>
             <td>{{ acti.AGE_FECHA|date:'shortDate'}}</td>
             <td>{{ acti.ACT_DIRECCION}}</td>
-            <td>{{ acti.ACT_ESTADO }}</td>
+            <td [ngClass]="{
+              'bg-danger': acti.ACT_ESTADO === 'Pendiente',
+              'bg-warning': acti.ACT_ESTADO === 'Iniciada'
+            }"><b>{{ acti.ACT_ESTADO }}</b></td>
             <td>
               <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
                 <i class="bi bi-gear-wide text-primary" style="padding-left: 40%; font-size: medium"></i>
@@ -103,7 +106,8 @@
         <button nbButton class="custom-button" (click)="iniciar(data[0].ACT_ID)" (click)="ref.close()">Iniciar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="finalizar(data[0].ACT_ID)" (click)="ref.close()">Finalizar</button>
+        <button nbButton class="custom-button" (click)="finalizar(data[0].ACT_ID)"
+          (click)="ref.close()">Finalizar</button>
       </div>
     </nb-card-footer>
 
