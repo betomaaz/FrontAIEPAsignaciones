@@ -54,7 +54,7 @@ export class TooltipComponent {
     this.service.getdeposito().subscribe(resp => {
 
       this.actividad = resp['deposito']['rows'];
-      console.log("esto es data depos", this.actividad)
+
 
     })
   }

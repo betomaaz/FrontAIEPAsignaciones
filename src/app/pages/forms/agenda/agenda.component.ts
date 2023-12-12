@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { ActividadesService } from '../../../services/actividades.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 
 
 @Component({
   selector: 'ngx-form-inputs',
-  styleUrls: ['./form-inputs.component.scss'],
-  templateUrl: './form-inputs.component.html',
+  styleUrls: ['./agenda.component.scss'],
+  templateUrl: './agenda.component.html',
 })
 export class FormInputsComponent implements OnInit {
 
@@ -42,7 +43,8 @@ export class FormInputsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private service: ActividadesService) {
+    private service: ActividadesService,
+    private toastrService: NbToastrService) {
     service.getComunas().subscribe((data: any) => {
       this.comunas = data['comuna']['rows']
 
@@ -75,11 +77,33 @@ export class FormInputsComponent implements OnInit {
       );
   }
 
+  status: NbComponentStatus = 'success'
   guardar() {
     this.formActividad.get('AGE_USR_ID').patchValue(this.usuario_id)
     this.formActividad.get('AGE_FECHA').patchValue(this.agendaFecha)
     this.service.postActividades(this.formActividad.value).subscribe((data: any) => {
-      this.router.navigate(['/pages/tables/smart-table'])
+      this.showToast(this.status, 'Asignación Guardada con Éxito', 'Ok')
+      this.router.navigate(['/pages/agenda'])
+
     })
   }
+
+  private showToast(type: NbComponentStatus, title: string, body: string) {
+    const config = {
+      status: type,
+      destroyByClick: true,
+      duration: 2000,
+      hasIcon: true,
+      position: NbGlobalPhysicalPosition.TOP_RIGHT,
+      preventDuplicates: false,
+    };
+    const titleContent = title ? `. ${title}` : '';
+
+
+    this.toastrService.show(
+      body,
+      `${titleContent}`,
+      config);
+  }
+
 }

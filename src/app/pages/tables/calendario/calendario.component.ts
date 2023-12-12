@@ -10,8 +10,8 @@ import { NbDialogService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-smart-table',
-  templateUrl: './smart-table.component.html',
-  styleUrls: ['./smart-table.component.scss'],
+  templateUrl: './calendario.component.html',
+  styleUrls: ['./calendario.component.scss'],
 })
 export class SmartTableComponent implements OnInit {
 

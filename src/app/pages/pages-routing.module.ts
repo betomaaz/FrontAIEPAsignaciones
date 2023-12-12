@@ -16,7 +16,7 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
-      path: 'forms',
+      path: 'agendamiento',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
     },
@@ -38,7 +38,7 @@ const routes: Routes = [{
     },
 
     {
-      path: 'tables',
+      path: 'agenda',
       loadChildren: () => import('./tables/tables.module')
         .then(m => m.TablesModule),
     },

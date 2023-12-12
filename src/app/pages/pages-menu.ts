@@ -68,14 +68,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 
   {
-    title: 'Agendamiento',
+    title: 'Agenda',
     icon: 'calendar-outline',
-    link: '/pages/tables/smart-table',
+    link: '/pages/agenda',
   },
   {
     title: 'Usuarios',
     icon: 'people-outline',
-    link: '/pages/tables/tree-grid',
+    link: '/pages/agenda/usuarios',
   },
 
 

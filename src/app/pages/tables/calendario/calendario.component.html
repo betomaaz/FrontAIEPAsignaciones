@@ -127,7 +127,7 @@
               <div (click)="editarActividad(acti,dialog,20)" style="cursor: pointer;">{{acti.HORA_20}}</div>
             </td>
             <td>
-              <a routerLink="/pages/forms/inputs" [queryParams]="{id:acti.USR_ID , fecha:form.get('AGE_FECHA').value}">
+              <a routerLink="/pages/agendamiento" [queryParams]="{id:acti.USR_ID , fecha:form.get('AGE_FECHA').value}">
                 <i class="bi bi-plus-circle" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
               </a>
             </td>

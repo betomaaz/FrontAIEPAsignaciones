@@ -15,8 +15,8 @@ import { actividad } from '../../../interfaces';
 
 @Component({
   selector: 'ngx-toastr',
-  styleUrls: ['./toastr.component.scss'],
-  templateUrl: './toastr.component.html',
+  styleUrls: ['./misactividades.component.scss'],
+  templateUrl: './misactividades.component.html',
 })
 export class ToastrComponent {
 

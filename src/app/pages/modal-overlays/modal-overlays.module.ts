@@ -22,9 +22,7 @@ import { ModalOverlaysComponent } from './modal-overlays.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { ShowcaseDialogComponent } from './dialog/showcase-dialog/showcase-dialog.component';
 import { DialogNamePromptComponent } from './dialog/dialog-name-prompt/dialog-name-prompt.component';
-import { WindowComponent } from './window/window.component';
-import { WindowFormComponent } from './window/window-form/window-form.component';
-import { ToastrComponent } from './toastr/toastr.component';
+import { ToastrComponent } from './misactividades/misactividades.component';
 import { PopoversComponent } from './popovers/popovers.component';
 import {
   NgxPopoverCardComponent, NgxPopoverFormComponent,
@@ -39,8 +37,6 @@ const COMPONENTS = [
   DialogComponent,
   ShowcaseDialogComponent,
   DialogNamePromptComponent,
-  WindowComponent,
-  WindowFormComponent,
   PopoversComponent,
   NgxPopoverCardComponent,
   NgxPopoverFormComponent,
@@ -51,7 +47,6 @@ const COMPONENTS = [
 const ENTRY_COMPONENTS = [
   ShowcaseDialogComponent,
   DialogNamePromptComponent,
-  WindowFormComponent,
   NgxPopoverCardComponent,
   NgxPopoverFormComponent,
   NgxPopoverTabsComponent,
