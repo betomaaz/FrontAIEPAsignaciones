@@ -100,10 +100,10 @@
         <button nbButton (click)="ref.close()">Cerrar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="iniciar(data[0].ACT_ID)">Iniciar</button>
+        <button nbButton class="custom-button" (click)="iniciar(data[0].ACT_ID)" (click)="ref.close()">Iniciar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="finalizar(data[0].ACT_ID)">Finalizar</button>
+        <button nbButton class="custom-button" (click)="finalizar(data[0].ACT_ID)" (click)="ref.close()">Finalizar</button>
       </div>
     </nb-card-footer>
 

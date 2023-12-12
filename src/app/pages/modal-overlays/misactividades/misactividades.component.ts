@@ -21,24 +21,16 @@ import { Router } from '@angular/router';
 })
 export class ToastrComponent {
 
-
+  actividad: actividad[] = [];
   form: FormGroup;
-
   USR_ID: number | null = null;
 
   ngOnInit(): void {
 
-
     this.USR_ID = +(localStorage.getItem('usr_id'));
-
     this.misAsignaciones({ USR_ID: this.USR_ID });
 
-
-
-    console.log(this.USR_ID)
-
   }
-
 
   constructor(private menuService: NbMenuService,
     private service: ActividadesService,
@@ -52,13 +44,9 @@ export class ToastrComponent {
     });
   }
 
-
-
-
   goToHome() {
     this.menuService.navigateHome();
   }
-
 
   getFechaActual(): string {
     const today = new Date();
@@ -68,35 +56,22 @@ export class ToastrComponent {
     return `${year}-${month}-${day}`;
   }
 
-  actividad: actividad[] = [];
 
   misAsignaciones(USR_ID) {
-
+    this.actividad = []
     this.service.misAsignaciones(USR_ID).subscribe(resp => {
       this.actividad = resp['asignacion']['rows'];
-      console.log(this.actividad)
-
     })
   }
 
   actividad_seleccionada;
 
   editarActividad(actividad, dialog: TemplateRef<any>, hora) {
-
-
-    console.log("id act: ", actividad)
     this.actividad_seleccionada = actividad
-    console.log("id ac selec", this.actividad_seleccionada)
-
-    // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
-    // Pasar el id actividad_seleccionada
-
     this.service.getModal({ ACT_ID: this.actividad_seleccionada }).subscribe(
       (data) => {
 
         const prueba = data;
-        console.log('NOMBRE:', prueba['data_act']['rows']);
-
         this.dialogService.open(
           dialog,
           {
@@ -111,45 +86,22 @@ export class ToastrComponent {
   }
 
 
-  status: NbComponentStatus = 'success'
-
   iniciar(ID_ACT) {
-
-
-    console.log("ID iniciar:", ID_ACT)
-    this.showToast(this.status, 'Actividad Iniciada', '')
-    this.router.navigate(['/pages/misactividades'])
+    this.showToast('success', 'Actividad Iniciada', '')
     this.service.iniciarAct({ ACT_ID: ID_ACT }).subscribe(data => {
-
-
-
-      this.misAsignaciones(this.USR_ID)
-
-
-
-
+      this.USR_ID = parseInt(localStorage.getItem('usr_id'));
+      this.misAsignaciones({ USR_ID: this.USR_ID });
     })
   }
 
-  fin: NbComponentStatus = 'success'
 
   finalizar(ID_ACT) {
-
-
-
+    this.showToast('success', 'Actividad Finalizada', '')
     this.service.finalizarAct({ ACT_ID: ID_ACT }).subscribe(data => {
-
-      this.router.navigate(['/pages/misactividades'])
-      this.showToast(this.fin, 'Actividad Finalizada', '')
-      this.misAsignaciones(this.USR_ID)
-
-
+      this.USR_ID = parseInt(localStorage.getItem('usr_id'));
+      this.misAsignaciones({ USR_ID: this.USR_ID });
     })
-
-
-
   }
-
 
   private showToast(type: NbComponentStatus, title: string, body: string) {
     const config = {
