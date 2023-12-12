@@ -2,7 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { NotFoundComponent } from './miscellaneous/auditoria/auditoria.component';
+import { NotFoundComponent } from './auditor/auditoria/auditoria.component';
 import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [{
@@ -40,7 +40,7 @@ const routes: Routes = [{
     },
     {
       path: 'auditoria',
-      loadChildren: () => import('./miscellaneous/auditor.module')
+      loadChildren: () => import('./auditor/auditor.module')
         .then(m => m.MiscellaneousModule),
     },
     {
