@@ -1,8 +1,10 @@
 <div style="min-width:81vw ;">
   <div class="card p-5">
-    <div class="card-header mt">
-      <h3 class="text-center">Auditoria De Actividades</h3>
+    <div class="card-header mt-2" style="background: linear-gradient(to right, #007bff, #00bfff);">
+      <h3 class="text-center text-white">Auditoria De Actividades</h3>
     </div>
+
+
 
 
     <div class="card-body">
@@ -18,11 +20,9 @@
         <thead class="thead-light">
           <tr>
             <th>
-              Nombre
+              Nombre de Técnico
             </th>
-            <th>
-              Apellido
-            </th>
+
             <th>
               Actividad
             </th>
@@ -33,7 +33,16 @@
               Proyecto
             </th>
             <th>
-              Calificación
+              Usuario
+            </th>
+            <th>
+              Correo
+            </th>
+            <th>
+              Telefono
+            </th>
+            <th>
+              Resultado
             </th>
           </tr>
         </thead>
@@ -42,11 +51,17 @@
 
 
             <td>{{ acti.USR_NOMBRES }}</td>
-            <td>{{ acti.USR_AP_PATERNO }}</td>
             <td>{{ acti.ACT_NOMBRE}}</td>
             <td>{{ acti.CLI_NOMBRE}}</td>
             <td>{{ acti.PRO_NOMBRE }}</td>
-            <td>{{ acti.CAL_COMENTARIO }}</td>
+            <td>{{ acti.ACT_NOMBRE_SOLICITANTE }}</td>
+            <td>{{ acti.ACT_CORREO_SOLICITANTE }}</td>
+            <td>{{ acti.ACT_TELEFONO_SOLICITANTE }}</td>
+            <td>
+              <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
+                <i class="bi bi-gear-wide" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
+              </a>
+            </td>
           </tr>
 
 
@@ -58,3 +73,42 @@
       
   </div>
 </div>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Revisión De Actividad</nb-card-header>
+    <nb-card-body>
+
+      <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
+      <p><b>Cliente: </b>{{data[0].CLI_NOMBRE}}</p>
+      <p><b>Proyecto: </b>{{data[0].PRO_NOMBRE}}</p>
+      <p><b>Dirección:</b> {{data[0].ACT_DIRECCION}}</p>
+
+      <div class="d-flex justify-content-between align-items-center mb-6">
+        <p class="mb-0"><b>Monto de Viático:</b> {{data[0].DEP_MONTO}}</p>
+        <!-- Botón para adjuntar archivo -->
+        <div class="d-flex align-items-center">
+          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+          <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Orden De Trabajo</button>
+        </div>
+      </div>
+      <p><b>Descripción:</b> {{data[0].ACT_DESCRIPCION}}</p>
+
+
+
+    </nb-card-body>
+
+    <nb-card-footer class="d-flex justify-content-between">
+      <div>
+        <button nbButton (click)="ref.close()">Cerrar</button>
+      </div>
+      <div>
+        <button nbButton class="custom-button" (click)="Confirmar(data[0].ACT_ID)">Confirmar</button>
+      </div>
+      <div>
+        <button nbButton class="custom-button" (click)="Desaprobar(data[0].ACT_ID)">Denegar</button>
+      </div>
+    </nb-card-footer>
+
+  </nb-card>
+</ng-template>

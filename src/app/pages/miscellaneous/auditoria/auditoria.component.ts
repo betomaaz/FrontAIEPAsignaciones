@@ -1,5 +1,5 @@
 import { NbDialogService, NbMenuService } from '@nebular/theme';
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { ActividadesService } from '../../../services/actividades.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { actividad } from '../../../interfaces';
@@ -62,4 +62,37 @@ export class NotFoundComponent {
 
     })
   }
+
+
+  actividad_seleccionada;
+
+  editarActividad(actividad, dialog: TemplateRef<any>, hora) {
+
+
+
+    this.actividad_seleccionada = actividad
+
+
+    // TODO LLAMAR SERVICIO POR DI DE LA ACTIVIDAD
+    // Pasar el id actividad_seleccionada
+
+    this.service.getModal({ ACT_ID: this.actividad_seleccionada }).subscribe(
+      (data) => {
+
+        const prueba = data;
+        console.log('NOMBRE:', prueba['data_act']['rows']);
+
+        this.dialogService.open(
+          dialog,
+          {
+            context: prueba['data_act']['rows'],
+            closeOnEsc: false,
+            hasBackdrop: true,
+
+          });
+      }
+    );
+
+  }
+
 }

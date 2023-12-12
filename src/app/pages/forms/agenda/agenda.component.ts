@@ -82,7 +82,7 @@ export class FormInputsComponent implements OnInit {
     this.formActividad.get('AGE_USR_ID').patchValue(this.usuario_id)
     this.formActividad.get('AGE_FECHA').patchValue(this.agendaFecha)
     this.service.postActividades(this.formActividad.value).subscribe((data: any) => {
-      this.showToast(this.status, 'Asignación Guardada con Éxito', 'Ok')
+      this.showToast(this.status, 'Asignación Guardada con Éxito', '')
       this.router.navigate(['/pages/agenda'])
 
     })
@@ -92,7 +92,7 @@ export class FormInputsComponent implements OnInit {
     const config = {
       status: type,
       destroyByClick: true,
-      duration: 2000,
+      duration: 4000,
       hasIcon: true,
       position: NbGlobalPhysicalPosition.TOP_RIGHT,
       preventDuplicates: false,

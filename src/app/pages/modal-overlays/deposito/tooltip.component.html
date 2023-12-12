@@ -1,14 +1,16 @@
 <div style="min-width:81vw ;">
-  <div class="card p-5">
-    <div class="card-header mt-2" style="background: linear-gradient(to right, #007bff, #00bfff);">
+  <div class="card p-6">
+    <div class="card-header mt-1" style="background: linear-gradient(to right, #012e5e, #0a06d3);">
       <h3 class="text-center text-white">Gestión De Depósitos</h3>
     </div>
 
-    <div class="input-group mt-3 mx-3">
-      <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-        aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Buscar</button>
+    <div class="container mt-4">
+      <div class="input-group" style="width: 20%;">
+        <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <!-- <button class="btn btn-outline-secondary" type="button">Buscar</button> -->
+        </div>
       </div>
     </div>
 
@@ -54,7 +56,7 @@
 
             <td>{{ acti.ACT_NOMBRE}}</td>
             <td>{{ acti.DEP_MONTO}}</td>
-            <td>{{ acti.DEP_FECHA|date:'short' }}</td>
+            <td>{{ acti.DEP_FECHA|date:'shortDate' }}</td>
             <td>
               <span *ngFor="let item of acti.json_agg">{{item}}, </span>
 
@@ -104,8 +106,8 @@
       </div>
 
       <div>
-        <button routerLink="/pages/misactividades/deposito" nbButton class="custom-button"
-          (click)="registrardeposito(data[0].ACT_ID)">Registrar depósito</button>
+        <a nbButton class="custom-button" (click)="registrardeposito(data[0].ACT_ID)"
+          routerLink="/pages/misactividades/deposito">Registrar depósito</a>
       </div>
     </nb-card-footer>
 

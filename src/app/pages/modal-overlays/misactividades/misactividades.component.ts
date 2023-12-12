@@ -42,7 +42,8 @@ export class ToastrComponent {
   constructor(private menuService: NbMenuService,
     private service: ActividadesService,
     private dialogService: NbDialogService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastrService: NbToastrService) {
 
     this.form = this.formBuilder.group({
       AGE_FECHA: [this.getFechaActual()]
@@ -108,19 +109,55 @@ export class ToastrComponent {
   }
 
 
-  iniciar({ ACT_ID: ID_ACT }) {
+  status: NbComponentStatus = 'success'
 
-    console.log("ID INICIAR:", ID_ACT)
-    this.service.iniciarAct(ID_ACT)
+  iniciar(ID_ACT) {
+
+
+    console.log("ID iniciar:", ID_ACT)
+    this.showToast(this.status, 'Actividad Iniciada', '')
+    this.service.iniciarAct({ ACT_ID: ID_ACT }).subscribe(data => {
+
+      this.misAsignaciones(this.USR_ID)
+
+
+    })
+  }
+
+  fin: NbComponentStatus = 'success'
+
+  finalizar(ID_ACT) {
+
+
+    this.showToast(this.fin, 'Actividad Finalizada', '')
+    this.service.finalizarAct({ ACT_ID: ID_ACT }).subscribe(data => {
+
+      this.misAsignaciones(this.USR_ID)
+
+
+    })
+
+
 
   }
 
-  Finalizar(ID_ACT) {
+
+  private showToast(type: NbComponentStatus, title: string, body: string) {
+    const config = {
+      status: type,
+      destroyByClick: true,
+      duration: 4000,
+      hasIcon: true,
+      position: NbGlobalPhysicalPosition.TOP_RIGHT,
+      preventDuplicates: false,
+    };
+    const titleContent = title ? `. ${title}` : '';
 
 
-
-    console.log("ID FINALIZAR:", ID_ACT)
-    this.service.finalizarAct(ID_ACT)
+    this.toastrService.show(
+      body,
+      `${titleContent}`,
+      config);
   }
 
 

@@ -5,13 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { usuario } from '../../../interfaces';
 
-
-
-
-
-
-
-
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -27,8 +20,8 @@ interface FSEntry {
 
 @Component({
   selector: 'ngx-tree-grid',
-  templateUrl: './tree-grid.component.html',
-  styleUrls: ['./tree-grid.component.scss'],
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.scss'],
 })
 export class TreeGridComponent {
   customColumn = 'name';
@@ -124,6 +117,6 @@ export class FsIconComponent {
   @Input() expanded: boolean;
 
   isDir(): boolean {
-    return this.kind === 'dir';
-  }
+    return this.kind === 'dir';
+  }
 }

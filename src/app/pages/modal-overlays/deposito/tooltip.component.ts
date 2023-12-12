@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NbDialogService, NbMenuService } from '@nebular/theme';
+import { NbComponentStatus, NbDialogService, NbGlobalPhysicalPosition, NbMenuService, NbToastrService } from '@nebular/theme';
 import { ActividadesService } from '../../../services/actividades.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { actividad } from '../../../interfaces';
@@ -25,7 +25,8 @@ export class TooltipComponent {
   constructor(private menuService: NbMenuService,
     private service: ActividadesService,
     private dialogService: NbDialogService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private toastrService: NbToastrService) {
 
     this.formulario = this.formBuilder.group({
       AGE_FECHA: [this.getFechaActual()]
@@ -91,15 +92,18 @@ export class TooltipComponent {
 
   }
 
+  status: NbComponentStatus = 'success'
+
   actividad_deposito;
 
   registrardeposito(actividad) {
 
     this.actividad_deposito = actividad
 
+    this.datadeposito()
+    this.showToast(this.status, 'Depósito Registrado', '')
     this.service.regdeposito(this.actividad_deposito).subscribe(data => {
 
-      this.datadeposito()
 
     })
 
@@ -107,6 +111,26 @@ export class TooltipComponent {
 
 
 
+  }
+
+
+
+  private showToast(type: NbComponentStatus, title: string, body: string) {
+    const config = {
+      status: type,
+      destroyByClick: true,
+      duration: 4000,
+      hasIcon: true,
+      position: NbGlobalPhysicalPosition.TOP_RIGHT,
+      preventDuplicates: false,
+    };
+    const titleContent = title ? `. ${title}` : '';
+
+
+    this.toastrService.show(
+      body,
+      `${titleContent}`,
+      config);
   }
 
 
