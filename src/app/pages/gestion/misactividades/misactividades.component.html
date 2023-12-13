@@ -76,7 +76,7 @@
 
 <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>
-    <nb-card-header>Actividad Asignada</nb-card-header>
+    <nb-card-header style="text-align: center;"><b>DETALLE ACTIVIDAD</b></nb-card-header>
     <nb-card-body>
 
       <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
@@ -85,14 +85,16 @@
       <p><b>Dirección:</b> {{data[0].ACT_DIRECCION}}</p>
 
       <div class="d-flex justify-content-between align-items-center mb-6">
-        <p class="mb-0"><b>Monto de Viático:</b> {{data[0].DEP_MONTO}}</p>
-        <!-- Botón para adjuntar archivo -->
-        <div class="d-flex align-items-center">
-          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
-          <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Orden De Trabajo</button>
-        </div>
+        <p class="mb-0"><b>Monto de Viático:</b> {{data[0].DEP_MONTO}}</p>        
+      </div><br>
+      <div><p><b>Descripción:</b> {{data[0].ACT_DESCRIPCION}}</p></div>
+      <br>
+
+      <div class="d-flex align-items-center">
+        <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+        <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Orden De Trabajo</button>
       </div>
-      <p><b>Descripción:</b> {{data[0].ACT_DESCRIPCION}}</p>
+      <br>
 
 
 
@@ -100,13 +102,13 @@
 
     <nb-card-footer class="d-flex justify-content-between">
       <div>
-        <button nbButton (click)="ref.close()">Cerrar</button>
+        <button class="btn btn-dark" (click)="ref.close()">Cerrar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="iniciar(data[0].ACT_ID)" (click)="ref.close()">Iniciar</button>
+        <button class="btn btn-primary" (click)="iniciar(data[0].ACT_ID)" (click)="ref.close()">Iniciar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="finalizar(data[0].ACT_ID)"
+        <button class="btn btn-success" (click)="finalizar(data[0].ACT_ID)"
           (click)="ref.close()">Finalizar</button>
       </div>
     </nb-card-footer>

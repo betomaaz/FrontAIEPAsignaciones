@@ -104,13 +104,13 @@
 
     <nb-card-footer class="d-flex justify-content-between">
       <div>
-        <button nbButton (click)="ref.close()">Cerrar</button>
+        <button class="btn btn-dark" (click)="ref.close()">Cerrar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="Confirmar(data[0].ACT_ID)">Confirmar</button>
+        <button class="btn btn-primary" (click)="Confirmar(data[0].ACT_ID)">Confirmar</button>
       </div>
       <div>
-        <button nbButton class="custom-button" (click)="Desaprobar(data[0].ACT_ID)">Denegar</button>
+        <button class="btn btn-danger" (click)="Desaprobar(data[0].ACT_ID)">Denegar</button>
       </div>
     </nb-card-footer>
 

@@ -15,10 +15,10 @@ import {
 
 // modules
 import { ThemeModule } from '../../@theme/theme.module';
-import { ModalOverlaysRoutingModule } from './modal-overlays-routing.module';
+import { ModalOverlaysRoutingModule } from './gestion-routing.module';
 
 // components
-import { ModalOverlaysComponent } from './modal-overlays.component';
+import { ModalOverlaysComponent } from './gestion.component';
 import { ToastrComponent } from './misactividades/misactividades.component';
 import { TooltipComponent } from './deposito/tooltip.component';
 

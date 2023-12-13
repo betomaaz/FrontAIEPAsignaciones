@@ -82,7 +82,7 @@
 
 <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>
-    <nb-card-header>Detalle del Depósito</nb-card-header>
+    <nb-card-header style="text-align: center;"><b>DETALLE DEPÓSITO</b></nb-card-header>
     <nb-card-body>
 
       <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
@@ -91,23 +91,24 @@
       <div class="d-flex justify-content-between align-items-center mb-6">
         <p class="mb-0"><b>Monto Depósito:</b> {{data[0].DEP_MONTO}}</p>
         <!-- Botón para adjuntar archivo -->
-        <div class="d-flex align-items-center">
-          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
-          <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Comprobante</button>
-        </div>
+      </div><br><br>
+      <div class="d-flex align-items-center">
+        <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+        <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Comprobante</button>
       </div>
+      <br>
 
 
     </nb-card-body>
 
     <nb-card-footer class="d-flex justify-content-between">
       <div>
-        <button nbButton (click)="ref.close()">Cerrar</button>
+        <button class="btn btn-dark" (click)="ref.close()">Cerrar</button>
       </div>
 
       <div>
-        <a nbButton class="custom-button" (click)="registrardeposito(data[0].ACT_ID)"
-          routerLink="/pages/misactividades/deposito">Registrar depósito</a>
+        <button class="btn btn-primary" (click)="registrardeposito(data[0].ACT_ID)"
+          routerLink="/pages/misactividades/deposito">Registrar depósito</button>
       </div>
     </nb-card-footer>
 

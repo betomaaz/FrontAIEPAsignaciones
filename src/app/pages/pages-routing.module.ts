@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './auditor/auditoria/auditoria.component';
 import { ChartsComponent } from './charts/charts.component';
@@ -11,11 +10,6 @@ const routes: Routes = [{
   children: [
 
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
-    {
       path: 'agendamiento',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
@@ -23,7 +17,7 @@ const routes: Routes = [{
 
     {
       path: 'misactividades',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
+      loadChildren: () => import('./gestion/gestion.module')
         .then(m => m.ModalOverlaysModule),
     },
 
