@@ -2,7 +2,7 @@
   <div class="card p-6">
 
     <div class="card-header mt-1" style="background: linear-gradient(to right, #012e5e, #0a06d3);">
-      <h3 class="text-center text-white">Auditoria De Actividades</h3>
+      <h3 class="text-center text-white">Auditoria de actividades</h3>
     </div>
 
     <div class="container mt-4 d-flex justify-content-between align-items-center">
@@ -63,7 +63,7 @@
             <td>{{ acti.ACT_TELEFONO_SOLICITANTE }}</td>
             <td>
               <a (click)="editarActividad(acti.ACT_ID,dialog) " style="cursor: pointer;">
-                <i class="bi bi-gear-wide" style="margin-right: 30px; margin-left: 5px; padding-left: 20px; "></i>
+                <i class="bi bi-gear-wide text-primary" style="padding-left: 40%; font-size: medium; "></i>
               </a>
             </td>
           </tr>
@@ -80,23 +80,15 @@
 
 <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>
-    <nb-card-header>Revisión De Actividad</nb-card-header>
+    <nb-card-header style="text-align: center;"><b>DETALLE REVISIÓN ACTIVIDAD</b></nb-card-header>
     <nb-card-body>
 
       <p><b>Requerimiento: </b> {{data[0].ACT_NOMBRE}}</p>
       <p><b>Cliente: </b>{{data[0].CLI_NOMBRE}}</p>
       <p><b>Proyecto: </b>{{data[0].PRO_NOMBRE}}</p>
       <p><b>Dirección:</b> {{data[0].ACT_DIRECCION}}</p>
-
-      <div class="d-flex justify-content-between align-items-center mb-6">
-        <p class="mb-0"><b>Monto de Viático:</b> {{data[0].DEP_MONTO}}</p>
-        <!-- Botón para adjuntar archivo -->
-        <div class="d-flex align-items-center">
-          <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileInput>
-          <button nbButton class="ml-3" (click)="fileInput.click()">Adjuntar Orden De Trabajo</button>
-        </div>
-      </div>
-      <p><b>Descripción:</b> {{data[0].ACT_DESCRIPCION}}</p>
+      <p><b>Descripción:</b> {{data[0].ACT_DESCRIPCION}}</p><br>
+      <textarea rows="4" type="text" class="form-control" placeholder="Agregue observaciones de la revisión..."></textarea>
 
 
 
