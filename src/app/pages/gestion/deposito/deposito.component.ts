@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-tooltip',
-  templateUrl: 'tooltip.component.html',
-  styleUrls: ['tooltip.component.scss'],
+  templateUrl: 'deposito.component.html',
+  styleUrls: ['deposito.component.scss'],
 })
 export class TooltipComponent {
 

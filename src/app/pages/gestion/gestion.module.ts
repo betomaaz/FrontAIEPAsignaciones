@@ -20,7 +20,7 @@ import { ModalOverlaysRoutingModule } from './gestion-routing.module';
 // components
 import { ModalOverlaysComponent } from './gestion.component';
 import { ToastrComponent } from './misactividades/misactividades.component';
-import { TooltipComponent } from './deposito/tooltip.component';
+import { TooltipComponent } from './deposito/deposito.component';
 
 
 const COMPONENTS = [
